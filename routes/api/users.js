@@ -11,10 +11,10 @@ const User = require('../../models/Users');
 // @desc    Register new user
 // @access  Public
 router.post('/', (req, res) => {
-  const { name, email, password, stanley } = req.body;
+  const { name, email, password } = req.body;
 
   // Simple validation
-  if(!name || !email || !password || !stanley) {
+  if(!name || !email || !password) {
     return res.status(400).json({ msg: 'Please enter all fields' });
   }
 
@@ -26,8 +26,7 @@ router.post('/', (req, res) => {
       const newUser = new User({
         name,
         email,
-        password,
-        stanley
+        password
       });
 
       // Create salt & hash
@@ -48,8 +47,7 @@ router.post('/', (req, res) => {
                     user: {
                       id: user.id,
                       name: user.name,
-                      email: user.email,
-                      stanley: user.stanley
+                      email: user.email
                     }
                   });
                 }
@@ -61,29 +59,3 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-// const User = require("../../models/Users");
-
-// router.get("/", (req, res) => {
-//     User.find()
-//         .sort({
-//             date: -1
-//         })
-//         .then(users => (res.json(users)))
-// })
-
-// router.post("/", (req, res) => {
-//     const newUser = new User ({
-//         username: req.body.username,
-//         password: req.body.password,
-//         stanley: req.body.stanley
-//     });
-//     newUser.save()
-//         .then(user => res.json(user));
-// });
-
-// module.exports = router;
-
