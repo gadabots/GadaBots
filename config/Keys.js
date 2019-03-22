@@ -1,3 +1,4 @@
 module.exports = {
-    mongoURI: "mongodb+srv://ramezray:r2005moner@cluster0-kxkcm.mongodb.net/little_gadabots"
+    mongoURI: process.env.MONGODB_URI || "mongodb://localhost/little_gadabots",
+    jwtSecret: process.env.JWT_SECRET || "s00persekrit"
 }
