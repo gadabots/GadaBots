@@ -9,7 +9,7 @@ import {
     Button
   } from "reactstrap";
 
-class botPorfile extends Component {
+class BotProfile extends Component {
   render() {
     return (
         <Container>
@@ -40,4 +40,4 @@ class botPorfile extends Component {
   }
 }
 
-export default botPorfile;
+export default BotProfile;
