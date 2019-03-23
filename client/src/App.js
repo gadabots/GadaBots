@@ -8,10 +8,8 @@ import AppNavbar from "./components/AppNavbar"
 import Header from "./components/Header/header"
 import Footer from "./components/Footer/footer"
 import Home from "./pages/Home";
-import botPorfile from "./pages/botPorfile";
-import userPorfile from "./pages/userPorfile";
-import signIn from "./pages/signIn";
-import signUp from "./pages/signUp";
+import BotProfile from "./pages/BotProfile";
+import UserProfile from "./pages/UserProfile";
 import NoMatch from "./pages/NoMatch";
 
 class App extends Component {
@@ -27,8 +25,8 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/botPorfile" component={botPorfile} />
-          <Route exact path="/userPorfile" component={userPorfile} />
+          <Route exact path="/botProfile" component={BotProfile} />
+          <Route exact path="/userProfile" component={UserProfile} />
           <Route exact path="*" component={NoMatch} />
           </Switch>
         <Footer />
