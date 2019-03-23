@@ -1,40 +1,21 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import CheckIn from "../components/CheckIn";
+import UpdateUser from "../components/UpdateUser";
+import CreateGadaBot from "../components/CreateGadaBot";
 import {
-    Card,
-    Container,
-    Row,
-    Col,
-    CardTitle,
-    CardText,
-    Button
-  } from "reactstrap";
+  Container
+ } from 'reactstrap';
+
 
 class BotProfile extends Component {
   render() {
     return (
         <Container>
-        <Row>
-          <Col sm="6">
-            <Card body>
-              <CardTitle>Special Title Treatment</CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card body>
-              <CardTitle>Special Title Treatment</CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
-            </Card>
-          </Col>
-        </Row>
+          <p>Some text</p>
+         < CheckIn />
+         <UpdateUser />
+         <CreateGadaBot />
+     
       </Container>
     );
   }

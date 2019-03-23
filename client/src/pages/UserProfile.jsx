@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import CheckIn from "../components/CheckIn";
+import UpdateUser from "../components/UpdateUser";
+import CreateGadaBot from "../components/CreateGadaBot";
+
 import {
     Card,
     Container,
@@ -16,7 +20,12 @@ class userProfile extends Component {
     render() {
         return (
 
-            <Container><br />
+         <Container>
+         < CheckIn />
+         <UpdateUser />
+         <CreateGadaBot />
+            <br />
+            
                 <center><h1>Welcome (username here)!</h1>
                     <button className="btn btn-dark">&nbsp;Create a GadaBot&nbsp;</button>
                     <button className="btn btn-dark">Check in a Gadabot</button><br /><br />

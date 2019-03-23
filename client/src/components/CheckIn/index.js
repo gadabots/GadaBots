@@ -1,29 +1,45 @@
 import React, { Component } from 'react';
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  NavLink,
-  Alert
-} from 'reactstrap';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { login } from '../../actions/authActions';
-import { clearErrors } from '../../actions/errorActions';
+ // Modal,
+ // ModalHeader,
+ // ModalBody,
+ // Form,
+ // FormGroup,
+ // Label,
+ // Input,
+ // NavLink,
+ } from 'reactstrap';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { login } from '../../actions/authActions';
+// import { clearErrors } from '../../actions/errorActions';
 
 class CheckIn extends Component {
 
-  state = {
-    id: "",
-    location: "",
-    journal: "", 
-    photo: ""
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
+    this.state = {
+      show: false,
+      id: "",
+      location: "",
+      journal: "", 
+      photo: ""
+    };
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
 
 onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -34,7 +50,7 @@ onChange = e => {
     event.preventDefault();
     let id = "1234..."
     //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
-    if (this.state.id != id) {
+    if (this.state.id !== id) {
       alert("Please enter a valid id")
     } else if(!this.state.location) {
       alert("please update your GadaBots location")
@@ -55,29 +71,27 @@ onChange = e => {
           this.setState({
                   id: "",
                   location: "",
-                  journal: ""
+                  journal: "",
+                  show: false,
                 })
         // )  
         // .catch(err => console.log(err));
   
      
      }
+
   }
   render() {
     return (
-       <div>
-        <NavLink onClick={this.toggle} href='#'>
+       <>
+        <Button onClick={this.handleShow} href='#'>
           Check In GadaBot
-        </NavLink>
+        </Button>
 
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Add a new Loction</ModalHeader>
-          <ModalBody>
-            {this.state.msg ? (
-              <Alert color='danger'>{this.state.msg}</Alert>
-            ) : null}
-              
-              <form>
+        {this.state.show ?
+       <div className="card  w-75">
+       <div className="card-body">
+                <form>
                 <div className="form-group">
                   <label>Enter Your GaddaBot's ID</label>
                     <input className="form-control" 
@@ -129,20 +143,19 @@ onChange = e => {
                 onClick={this.onSubmit}
                 >Check In</button>
               </form>
-
-          </ModalBody>
-        </Modal>
-      </div>
-               
+              <button type="button" 
+              className="btn btn-secondary" 
+              name="close"
+              onClick={this.handleClose}
+              >Close</button>
+              </div>
+           </div>  
+       : <div> Click button to show check-in form</div>    }
+       
+      </>
+           
     );
   }
 }
 
-const mapStateToProps = state => ({
- isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
-});
-
-export default UpdateUser
- connect(mapStateToProps, 
-  { login, clearErrors })(LoginModal);
+export default CheckIn;
