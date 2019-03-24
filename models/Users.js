@@ -19,7 +19,10 @@ const UserSchema = new Schema({
   register_date: {
     type: Date,
     default: Date.now
-  }
+  },
+  bots:[
+    {type: Schema.Types.ObjectId, ref: "Bot"}
+  ]
 });
 
 module.exports = User = mongoose.model('user', UserSchema);
