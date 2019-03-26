@@ -59,7 +59,7 @@ onChange = e => {
       case "passwordUpdate":
         
       if (this.state.newPassword === this.state.newPasswordCheck){
-        API.updateUser(this.state.userid, name, this.state.name);
+        API.updateUser(this.state.userid, password, this.state.newPassword);
       }
         break;
     case "photoUpdate":
