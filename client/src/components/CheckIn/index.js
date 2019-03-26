@@ -49,7 +49,7 @@ onChange = e => {
      else  {
        newCheckIn = {
           location: this.state.location,
-          journal: this.state.journal,
+          journalEntry: this.state.journal,
           photo:this.state.photo
        }
        
