@@ -53,14 +53,17 @@ onChange = e => {
           photo:this.state.photo
        }
        
-        API.addNewLocation(this.state.id, 1, newCheckIn);
+       //this veriable will in the future be set to the length of the chekin array or checkin.length
+       let checkinLenth = 1
+        API.addNewLocation(this.state.id, checkinLenth, newCheckIn);
 
-          this.setState({
+        .then(  this.setState({
                   id: "",
                   location: "",
                   journal: "",
                   show: false,
                 })
+              )
      }
 
   }
