@@ -9,10 +9,10 @@ export default {
   getBotsByUser:function(userid) {
     return axios.get("api/bots/" + userid);
   },
-  updateName: function(userid, name) {
-    console.log("Updating user. Id: " + userid + ", Name: " + name)
+  updateUser: function(userid, fieldToChange, changeToMake) {
+    console.log("Updating user. Id: " + userid + ", fieldToChange: " + changeToMake)
     axios.put("/api/users/" + userid, {
-      name: name
+      fieldToChange: changeToMake
     }).then(
         // Reload the whole page to show the new name
         res => window.location.reload()
