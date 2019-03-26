@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
-
+// const auth = require('../../middleware/auth');
 
 // User Model
 const User = require('../../models/Users');
@@ -57,5 +57,27 @@ router.post('/', (req, res) => {
       })
     })
 });
+
+// @route   GET api/users/:id
+// @desc    Retrieve existing user
+// @access  Private
+router.get("/:id", (req, /*auth, */ res) => {
+  User
+    .findById(req.params.id)
+    .then(user => res.json(user));
+})
+
+// @route   PUT api/users/:id
+// @desc    Update existing user
+// @access  Private
+router.put("/:id", (req, /*auth, */ res) => {
+  User
+    .findByIdAndUpdate( req.params.id, req.body)
+    .then(user => res.json(user))
+    .catch(err => {
+      res.status(500).json(err);
+      console.log("Error updating user: " + err);
+    });
+})
 
 module.exports = router;

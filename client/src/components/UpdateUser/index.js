@@ -3,17 +3,20 @@ import {
   Button,
 
 } from 'reactstrap';
+import API from '../../utils/API';
 
 class UpdateUser extends Component {
+
   constructor(props, context) {
     super(props, context);
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
+    console.log(props);
     this.state = {
       show: false,
-      username: "",
+      userid: props.user._id,
+      name: props.user.name,
       currentPassword: "",
       newPassword: "",
       newPasswordCheck: "",
@@ -50,9 +53,8 @@ onChange = e => {
     event.preventDefault();
 
   switch(event.target.name) {
-      case "userNameUpdate":
-        // code block
-        alert("New username: "+ this.state.username);
+      case "nameUpdate":
+        API.updateName(this.state.userid, this.state.name);
         break;
       case "passwordUpdate":
         // code block
@@ -94,20 +96,20 @@ onChange = e => {
 
                 <div className="form-row align-items-center">
                   <div class="col-7">
-                    <label>Change your Username</label>
+                    <label>Change your Name</label>
                     <input className="form-control"
-                      id="username-update"
-                      name="username"
-                      value={this.state.username}
+                      id="name-update"
+                      name="name"
+                      value={this.state.name}
                       onChange={this.handleInputChange} />
                   </div>
                   <div className="col-auto">
                   <br />
                   <button
-                  name="userNameUpdate"
+                  name="nameUpdate"
                   type="submit"
                   className="btn btn-primary"
-                  onClick={this.handleFormSubmit}>Update username</button>
+                  onClick={this.handleFormSubmit}>Update name</button>
                   </div>
                 </div>
                 <br />

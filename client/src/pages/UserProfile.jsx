@@ -15,18 +15,34 @@ import {
     Button
 } from "reactstrap";
 
-class userProfile extends Component {
-    state = {}
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+class UserProfile extends Component {
+    state = {};
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired
+      };
+    
     render() {
+        // console.log(this.props.auth);
+        const { user } = this.props.auth;
+
+        // Don't render until the user is available
+        if (!user) {
+            return <div />
+        }
+
         return (
 
          <Container>
-         < CheckIn />
-         <UpdateUser />
+         <CheckIn />
+         <UpdateUser user={user}/>
          <CreateGadaBot />
             <br />
             
-                <center><h1>Welcome (username here)!</h1>
+                <center><h1>{`Welcome ${user.name}`}!</h1>
                     <button className="btn btn-dark">&nbsp;Create a GadaBot&nbsp;</button>
                     <button className="btn btn-dark">Check in a Gadabot</button><br /><br />
                 </center>
@@ -36,8 +52,8 @@ class userProfile extends Component {
                             <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                             <CardBody>
                                 <CardTitle><h5>Your Info</h5></CardTitle>
-                                <CardText>User Name: git )</CardText>
-                                <CardText>Email: (Email address here)</CardText>
+                                <CardText>Name: {user.name}</CardText>
+                                <CardText>Email: {user.email}</CardText>
                                 <button className="btn btn-dark">Update Your Info</button>
                             </CardBody>
                         </Card>
@@ -61,4 +77,8 @@ class userProfile extends Component {
     }
 }
 
-export default userProfile;
+const mapStateToProps = state => ({
+    auth: state.auth
+  });  
+
+export default connect(mapStateToProps, null)(UserProfile);

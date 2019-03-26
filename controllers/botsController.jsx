@@ -1,10 +1,10 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the botsController
 module.exports = {
   findBotsByUser: function (req, res) {
     db.Bot.
-      findOne({ username: req.params.username }).
+      findOne({ userid: req.params.userid }).
       populate('user').
       exec(function (err, bot) {
         if (err) return handleError(err);
