@@ -54,27 +54,28 @@ onChange = e => {
 
   switch(event.target.name) {
       case "nameUpdate":
-        API.updateName(this.state.userid, this.state.name);
+        API.updateUser(this.state.userid, name, this.state.name);
         break;
       case "passwordUpdate":
-        // code block
+        
       if (this.state.newPassword === this.state.newPasswordCheck){
-        alert("New password: "+ this.state.newPassword);
+        API.updateUser(this.state.userid, name, this.state.name);
       }
         break;
     case "photoUpdate":
-        // code block
+       
         alert("new photo submit clicked");
+      // API.updateUser(this.state.userid, name, this.state.name);
         break;
 
         case "close":
-        // code block
+        
         this.setState({
           show: false,
         })
         break;
     default: 
-          // code block photoUpdate
+          
           
 
       }
