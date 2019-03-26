@@ -4,8 +4,8 @@ import "./footer.css";
 class Footer extends Component {
   render() {
     return (
-      <div className="card bg-primary text-white" id="footer">
-        <div className="card-header">Little-GadaBots Team</div>
+      <div className="card bg-info text-white" id="footer">
+        <div className="card-header">Copyright &#169; 2019 GadaBots Team</div>
       </div>
     );
   }

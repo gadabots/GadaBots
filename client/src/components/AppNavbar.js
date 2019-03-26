@@ -31,6 +31,7 @@ class AppNavbar extends Component {
   };
 
   render() {
+    // console.log(this.props.auth);
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
@@ -61,7 +62,7 @@ class AppNavbar extends Component {
 
     return (
       <div>
-        <Navbar color='dark' dark expand='sm' className='mb-5'>
+        <Navbar color='info' dark expand='sm' className='mb-5'>
           <Container>
             <NavbarBrand href='/'>GadaBots</NavbarBrand>
             <NavbarToggler onClick={this.toggle}/>
