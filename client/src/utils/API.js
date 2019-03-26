@@ -17,6 +17,15 @@ export default {
         // Reload the whole page to show the new name
         res => window.location.reload()
       );
+  }, 
+   addNewLocation: function(id, legnthOfArray, changeToMake) {
+    console.log(changeToMake)
+    return axios.put("/api/bot/" + id {
+      checkIns[legnthOfArray]: changeToMake
+    }).then(
+        // Reload the whole page to show the new name
+        res => window.location.reload()
+      );;
   }
 
 };
