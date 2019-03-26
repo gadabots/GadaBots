@@ -8,6 +8,12 @@ import {
   } from 'reactstrap';  
   
   class BotProfile extends Component {
+  
+    state = {
+  // will match pot with the botId here
+  bot: testsBots
+ };
+
     render() {
       return (
           <Container>
