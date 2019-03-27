@@ -40,6 +40,7 @@ onChange = e => {
     
     
     //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
+    let id = true;
     if (this.state.id !== id) {
       alert("Please enter a valid id")
     } else if(!this.state.location) {
@@ -47,23 +48,23 @@ onChange = e => {
     }
 
      else  {
-       newCheckIn = {
+     const newCheckIn = {
           location: this.state.location,
           journalEntry: this.state.journal,
           photo:this.state.photo
        }
        
        //this veriable will in the future be set to the length of the chekin array or checkin.length
-       let checkinLenth = 1
-        API.addNewLocation(this.state.id, checkinLenth, newCheckIn);
+    
+        //API.addNewLocation(this.state.id, newCheckIn);
 
-        .then(  this.setState({
+         this.setState({
                   id: "",
                   location: "",
                   journal: "",
                   show: false,
                 })
-              )
+            
      }
 
   }

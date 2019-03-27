@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //import './createGadaBot.css';
-import CheckIn from './components/checkIn';
-import UpdateUser from './components/updateUser'
-import CreateGadaBot from './components/createGadaBot'
+import CheckIn from '../components/CheckIn';
+//import UpdateUser from './components/updateUser'
+import CreateGadaBot from '../components/CreateGadaBot'
 import testsBots from "./testBots.json";
 //import UpdateUser from './components/modals/updateUser'
 
@@ -14,9 +14,7 @@ state = {
  };
 
 handleFactShow() {
-  //  setState({ 
-  //     showFact: true
-  // })
+
   alert("the value of show ifact is: ")
 }
 
@@ -24,6 +22,7 @@ handleFactShow() {
     return (
       <div className="container">
         < CheckIn />
+        < CreateGadaBot />
         <br />
      {this.state.bot.map(bot => (
       <div alt="becauseItGotMad">

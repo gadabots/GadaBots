@@ -54,14 +54,14 @@ class CreateGadaBot extends Component {
       console.log(`homeTown: ${this.state.homeTown}` )
       console.log(`jounal: ${this.state.jounal}` )
 
-       gadaBot = {
+    const   gadaBot = {
           location: this.state.location,
           journalEntry: this.state.journal,
           photo:this.state.photo
        }
        
        //this will have a new location for bot, but not give it a name
-        API.addNewLocation(this.state.id, 0, gadaBot) 
+     //  API.addNewLocation(this.state.id, 0, gadaBot) 
        
           .then(this.setState({
             homeTown: "",
