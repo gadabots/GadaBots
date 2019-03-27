@@ -9,19 +9,29 @@ export default {
   getBotsByUser:function(userid) {
     return axios.get("api/bots/" + userid);
   },
-  updateUser: function(userid, fieldToChange, changeToMake) {
-    console.log("Updating user. Id: " + userid + ", fieldToChange: " + changeToMake)
+  updateUsername: function(userid, changeToMake) {
+    console.log("Updating user. Id: " + userid + ", name: " + changeToMake)
     axios.put("/api/users/" + userid, {
-      fieldToChange: changeToMake
+      name: changeToMake
     }).then(
         // Reload the whole page to show the new name
         res => window.location.reload()
       );
   }, 
-   addNewLocation: function(id, legnthOfArray, changeToMake) {
+  updatePassword: function(userid, changeToMake) {
+    console.log("Updating user. Id: " + userid + ", password: " + changeToMake)
+    axios.put("/api/users/" + userid, {
+      password: changeToMake
+    }).then(
+        // Reload the whole page to show the new name
+        res => window.location.reload()
+      );
+  },
+   addNewLocation: function(id, changeToMake) {
+    
     console.log(changeToMake)
-    return axios.put("/api/bot/" + id {
-      checkIns[legnthOfArray]: changeToMake
+    return axios.put("/api/bot/" + id, {
+      checkIns: changeToMake
     }).then(
         // Reload the whole page to show the new name
         res => window.location.reload()

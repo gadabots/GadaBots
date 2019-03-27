@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
+import API from  '../../utils/API'
 import {
   Button,
- // Modal,
- // ModalHeader,
- // ModalBody,
- // Form,
- // FormGroup,
- // Label,
- // Input,
- // NavLink,
  } from 'reactstrap';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { login } from '../../actions/authActions';
-// import { clearErrors } from '../../actions/errorActions';
+
 
 class CheckIn extends Component {
 
@@ -48,36 +38,33 @@ onChange = e => {
   onSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    let id = "1234..."
+    
+    
     //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
+   let id = true
     if (this.state.id !== id) {
       alert("Please enter a valid id")
     } else if(!this.state.location) {
-      alert("please update your GadaBots location")
+       alert("please add a new location")
     }
 
      else  {
+    const newCheckIn = {
+          location: this.state.location,
+          journalEntry: this.state.journal,
+          photo:this.state.photo
+       }
+       
+       //this veriable will in the future be set to the length of the chekin array or checkin.length
+        API.addNewLocation(this.state.id, "checkIns[1]", newCheckIn);
 
-      alert(`id: ${this.state.id}` )
-      alert(`location: ${this.state.location}` )
-      alert(`journal: ${this.state.journal}` )
-
-      // router.post({
-      //   name: this.state.name,
-      //   //checkin[c].location: this.state.location,
-      //   //checkin[c].jounal: this.state.jounal,
-      //   //checkin[c].photo: this.state.photo
-      // }) .then(
-          this.setState({
+         this.setState({
                   id: "",
                   location: "",
                   journal: "",
                   show: false,
                 })
-        // )  
-        // .catch(err => console.log(err));
-  
-     
+              
      }
 
   }
@@ -157,5 +144,4 @@ onChange = e => {
     );
   }
 }
-
 export default CheckIn;
