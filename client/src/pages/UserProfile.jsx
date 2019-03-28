@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CheckIn from "../components/CheckIn";
 import UpdateUser from "../components/UpdateUser";
 import CreateGadaBot from "../components/CreateGadaBot";
+import testsBots from "./testBots.json";
 
 import {
     Card,
@@ -19,32 +20,33 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class UserProfile extends Component {
-    state = {};
+    state = {
+        bot: testsBots
+    };
 
     static propTypes = {
         auth: PropTypes.object.isRequired
-      };
-    
+    };
+
     render() {
         // console.log(this.props.auth);
         const { user } = this.props.auth;
 
         // Don't render until the user is available
         if (!user) {
-            return <div />
+            return <h5>Please log in to see this page</h5>
         }
 
         return (
 
-         <Container>
-         <CheckIn />
-         <UpdateUser user={user}/>
-         <CreateGadaBot />
-            <br />
-            
+            <Container>
+
+                <br />
+
                 <center><h1>{`Welcome ${user.name}`}!</h1>
-                    <button className="btn btn-dark">&nbsp;Create a GadaBot&nbsp;</button>
-                    <button className="btn btn-dark">Check in a Gadabot</button><br /><br />
+                <CheckIn />
+                <CreateGadaBot />
+                <br /><br />
                 </center>
                 <Row>
                     <Col sm="4">
@@ -54,20 +56,37 @@ class UserProfile extends Component {
                                 <CardTitle><h5>Your Info</h5></CardTitle>
                                 <CardText>Name: {user.name}</CardText>
                                 <CardText>Email: {user.email}</CardText>
-                                <button className="btn btn-dark">Update Your Info</button>
+                                <UpdateUser user={user} />
                             </CardBody>
                         </Card>
                     </Col>
                     <Col sm="8">
                         <Card body>
                             <CardTitle><h4>Your GadaBot(s)</h4></CardTitle>
-                            <CardText>
-                                <ul>
-                                    <li>(Thumbnail of Bot Here)(Name of GadaBot Here)<button className="btn btn-dark-xs">View Bot</button></li>
-                                    <li>(Thumbnail of Bot Here)(Name of GadaBot Here)<button className="btn btn-dark-xs">View Bot</button></li>
-                                    <li>(Thumbnail of Bot Here)(Name of GadaBot Here)<button className="btn btn-dark-xs">View Bot</button></li>
-                                </ul>
-                            </CardText>
+
+                            <ul>
+                                {this.state.bot.map(bot => (
+                                    <li className="list-group-item list-group-item-action">
+
+                                        <div  key={bot.id}>
+                                            <div className="row">
+                                                <div className="col-3">
+                                                    <img className="card-img-top" src={bot.checkIns[0].pic}
+                                                        alt={bot.name} />
+                                                </div>
+
+                                                <div className ="col-9">
+                                                    <div className="card-title"> <h1>{bot.name}</h1></div>
+                                                    <p><strong>Hometown: </strong>{bot.checkIns[0].location} </p>
+                                                    <p><strong>Created Date: </strong>{bot.checkIns[0].date} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                ))}
+                            </ul>
+
 
                         </Card>
                     </Col>
@@ -79,6 +98,6 @@ class UserProfile extends Component {
 
 const mapStateToProps = state => ({
     auth: state.auth
-  });  
+});
 
 export default connect(mapStateToProps, null)(UserProfile);
