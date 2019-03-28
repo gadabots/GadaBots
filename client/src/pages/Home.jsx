@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Map from "../components/GoogleMap/GoogleMap"
+import MapContainer from "../components/GoogleMap/GoogleMap"
 
 import {
   Card,
@@ -31,10 +31,10 @@ class Home extends Component {
               <Button>Go somewhere</Button>
             </Card>
           </Col>
-          <Col lg="8">
-            <Card body>
-              <Map />
-            </Card>
+          <Col >
+            {/* <Card body> */}
+              <MapContainer />
+            {/* </Card> */}
           </Col>
         </Row>
       </Container>

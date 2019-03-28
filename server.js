@@ -4,16 +4,18 @@ const path = require('path');
 const bodyParser = require("body-parser");
 
 const users =  require("./routes/api/users")
+const auth =  require("./routes/api/auth")
+const bots =  require("./routes/api/bots")
 
 const app = express();
 
 app.use(bodyParser.json());
-const dbUri = require("./config/Keys").mongoURI;
+const db = require("./config/Keys").mongoURI;
 
 
 // Connect to Mongo
 mongoose
-  .connect(dbUri, { 
+  .connect(db, { 
     useNewUrlParser: true,
     useCreateIndex: true
   }) // Adding new mongo url parser
@@ -21,8 +23,9 @@ mongoose
   .catch(err => console.log(err));
 
 // Use Routes
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/users', users);
+app.use('/api/auth', auth);
+app.use("/api/bots", bots);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

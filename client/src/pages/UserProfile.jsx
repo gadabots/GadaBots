@@ -11,8 +11,7 @@ import {
     CardTitle,
     CardText,
     CardImg,
-    CardBody,
-    Button
+    CardBody
 } from "reactstrap";
 
 import { connect } from 'react-redux';

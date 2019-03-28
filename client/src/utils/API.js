@@ -2,12 +2,20 @@ import axios from "axios";
 
 export default {
  
+  // Gets all saved bots
+  getSavedBot: function() {
+    return axios.get("/");
+  },
   // Gets the bot with the given id
   getBot: function(id) {
     return axios.get("/api/bot/" + id);
   },
   getBotsByUser:function(userid) {
     return axios.get("api/bots/" + userid);
+  },
+  // Saves an bot to the database
+  saveBot: function(BotData) {
+    return axios.post("/api/bots", BotData);
   },
   updateName: function(userid, name) {
     console.log("Updating user. Id: " + userid + ", Name: " + name)
