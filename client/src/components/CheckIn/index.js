@@ -137,7 +137,7 @@ onChange = e => {
               >Close</button>
               </div>
            </div>  
-       : <div> Click button to show check-in form</div>    }
+       : <span> </span>    }
        
       </>
            
