@@ -12,6 +12,12 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      botPlacesTest:[
+        {_id:1, lat: 42.02, lng: -77.01 },
+        {_id:2, lat: 42.03, lng: -77.02 },
+        {_id:3, lat: 41.03, lng: -77.04 },
+        {_id:4, lat: 42.05, lng: -77.02 }
+    ],
       showingInfoWindow: false,
       activeMarker: {},
       activeMarkerId : ""
@@ -37,11 +43,11 @@ export class MapContainer extends Component {
   };
   
   createMarker = () =>
-    this.props.botPlaces.map(bots => (
+    this.state.botPlacesTest.map(bots => (
       <Marker
         key={bots._id}
         position={{ lat: bots.lat, lng: bots.lng }}
-        // onClick={this.getOneBotInfo(bots._id)}
+        onClick={this.onMarkerClick}
       />
     ));
 
@@ -56,7 +62,7 @@ export class MapContainer extends Component {
           lng: -122.428093
         }}
       >
-        {/* {console.log(this.props.saveBots)} */}
+        {console.log(this.props.saveBots)}
         {this.createMarker()}
         <InfoWindow
           marker={this.state.activeMarker}

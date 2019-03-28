@@ -4,7 +4,11 @@ export default {
  
   // Gets all saved bots
   getSavedBot: function() {
-    return axios.get("/");
+    return axios.get("/api/bots");
+  },
+  // Gets all saved Users
+  getSavedUser: function() {
+    return axios.get("/api/users");
   },
   // Gets the bot with the given id
   getBot: function(id) {
