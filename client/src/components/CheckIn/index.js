@@ -73,11 +73,11 @@ onChange = e => {
     return (
        <>
 
-        {this.state.show ?
-
-                <Button onClick={this.handleShow} href='#'>
+<Button onClick={this.handleShow} href='#'>
                 Check In GadaBot
               </Button>
+        {this.state.show ?
+
       
        <div className="card  w-75">
        <div className="card-body">
