@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const path = require('path');
 
 
 const checkIn = new Schema({
@@ -13,10 +14,20 @@ const checkIn = new Schema({
 
 const botSchema = new Schema({
       name: { type: String, required: true },
+<<<<<<< HEAD
       checkIns: [checkIn],
+=======
+      checkIns:[
+            {
+            pic: { type: String, required: true },
+            location: { type: String, required: true },
+            journalEntry: { type: String, required: true },
+            date: { type: Date, default: Date.now }
+            }
+      ],
+>>>>>>> 09f7b059269d6cd5b03aedd169212380d7ab7d81
       userid: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 });
 
-const Bot = mongoose.model("Bot", botSchema);
+module.exports = Bot = mongoose.model("bot", botSchema);
 
-module.exports = Bot;

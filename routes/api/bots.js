@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const newBot = new Bot ({
         name:  req.body.name,
-        checkIns: {
+        checkIns:{
             pic: req.body.pic,
             location:  req.body.location,
             journalEntry:  req.body.journalEntry

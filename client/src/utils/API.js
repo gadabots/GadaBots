@@ -3,11 +3,11 @@ import axios from "axios";
 export default {
  
   // Gets all saved bots
-  getSavedBot: function() {
+  getSavedBot: () => {
     return axios.get("/api/bots");
   },
   // Gets all saved Users
-  getSavedUser: function() {
+  getSavedUser: () => {
     return axios.get("/api/users");
   },
   // Gets the bot with the given id

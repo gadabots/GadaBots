@@ -12,15 +12,9 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      botPlacesTest:[
-        {_id:1, lat: 42.02, lng: -77.01 },
-        {_id:2, lat: 42.03, lng: -77.02 },
-        {_id:3, lat: 41.03, lng: -77.04 },
-        {_id:4, lat: 42.05, lng: -77.02 }
-    ],
       showingInfoWindow: false,
       activeMarker: {},
-      activeMarkerId : ""
+      activeMarkerId: ""
     };
   }
 
@@ -41,17 +35,23 @@ export class MapContainer extends Component {
       });
     }
   };
-  
-  createMarker = () =>
-    this.state.botPlacesTest.map(bots => (
-      <Marker
-        key={bots._id}
-        position={{ lat: bots.lat, lng: bots.lng }}
-        onClick={this.onMarkerClick}
-      />
-    ));
 
-    render() {
+  createMarker = () => {
+    // console.log("props", this.props);
+    if (this.props.botPlaces != null) {
+      return this.props.botPlaces.map(bots => (
+        <Marker
+          key={bots._id}
+          position={{ lat: bots.lat, lng: bots.lng }}
+          onClick={this.onMarkerClick}
+        />
+      ));
+    } else {
+      return null;
+    }
+  };
+
+  render() {
     return (
       <Map
         google={this.props.google}
@@ -69,9 +69,7 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-          <Container className="m-2">
-          {/* {console.log(console.log(this.state.activeMarkerId))} */}
-          </Container>
+          <Container className="m-2" />
         </InfoWindow>
       </Map>
     );
