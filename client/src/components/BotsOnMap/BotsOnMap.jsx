@@ -3,14 +3,14 @@ import API from "../../utils/API";
 import MapContainer from "../GoogleMap/GoogleMap";
 import Geocode from "react-geocode";
 
-class UserAndBot extends Component {
+class BotsOnMap extends Component {
   //Setting a state for ver that will hold bots and places
   state = {
-    saveBots: [],
+    saveBots: [ ],
     botPlaces: []
   };
 
-  //API call to get all saved bots and store it on saveBots array
+  // API call to get all saved bots and store it on saveBots array
   getSavedBots = () => {
     API.getSavedBot()
       .then(res =>
@@ -19,14 +19,16 @@ class UserAndBot extends Component {
         })
       )
       .then(() => {
-        let botCityAndId = this.state.saveBots.map(cityName => ({
-          cityName: cityName.name,
-          botsId: cityName._id
+        let botCityAndId = this.state.saveBots.map(city => ({
+          botsId: city.checkIns.map(checkin => checkin._id),
+          location: city.checkIns.map(checkin => checkin.location)
         }));
         Geocode.setApiKey("AIzaSyBAIKAtjZeY9SStYI_Dr7XDiALX17AkK0Y");
 
+        console.log(botCityAndId.botsId)
+
         Object.keys(botCityAndId).map(i => {
-          return Geocode.fromAddress(botCityAndId[i].cityName).then(
+          return Geocode.fromAddress(botCityAndId[i].location).then(
             response => {
               const { lat, lng } = response.results[0].geometry.location;
               console.log(lat, lng);
@@ -63,4 +65,4 @@ class UserAndBot extends Component {
   }
 }
 
-export default UserAndBot;
+export default BotsOnMap;

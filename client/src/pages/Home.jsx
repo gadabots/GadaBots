@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MapContainer from "../components/GoogleMap/GoogleMap"
+import BotsOnMap  from "../components/BotsOnMap/BotsOnMap"
 
 import {
   Card,
@@ -33,7 +33,7 @@ class Home extends Component {
           </Col>
           <Col >
             {/* <Card body> */}
-              <MapContainer />
+            <BotsOnMap />
             {/* </Card> */}
           </Col>
         </Row>
