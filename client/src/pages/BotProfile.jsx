@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     // will match pot with the botId here
     bot: testBots[0],
-    sentence: ""
+    sentence: "",
+    location: testBots[0].location
   };
 
   handleFactShow(city3) {

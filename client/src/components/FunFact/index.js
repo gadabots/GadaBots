@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import CheckIn from '../CheckIn';
+import testBots from "../../pages/testBots.json";
 const wtf = require('wtf_wikipedia');
 
 
 class FunFact extends Component {
 
   state = {
+    bot: testBots[0],
+    location: testBots[0].location,
     sentence: "loading ..."
   }
   
   componentDidMount() {
     //do the API req .then(function() => this.setState())
-    //store in state
+    //store in state  
 
-    //##############################################################################
-    //######### How do I get location to equal user input of location???? ##########
-    let location="Seattle";
-    
-
-    wtf.fetch(location).then(doc => {    
+    wtf.fetch(this.props.location).then(doc => {    
    
       doc.sentences(0).text();
       //concatenate or loop to tailor blurb length
-      console.log(doc.sentences(0).text());
+     // console.log(doc.sentences(0).text());
 
       this.setState({sentence: doc.sentences(0).text()})
   })
