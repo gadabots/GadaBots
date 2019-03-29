@@ -14,7 +14,8 @@ export class MapContainer extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      activeMarkerId: ""
+      activeMarkerId: "",
+      botInfo:""
     };
   }
 
@@ -62,14 +63,13 @@ export class MapContainer extends Component {
           lng: -122.428093
         }}
       >
-        {console.log(this.props.saveBots)}
         {this.createMarker()}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-          <Container className="m-2" />
+          <Container className="m-2" >here what info will display</Container>
         </InfoWindow>
       </Map>
     );
