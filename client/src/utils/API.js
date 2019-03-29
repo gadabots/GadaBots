@@ -12,7 +12,7 @@ export default {
   },
   // Gets the bot with the given id
   getBot: function(id) {
-    return axios.get("/api/bot/" + id);
+    return axios.get("/api/bots/" + id);
   },
   getBotsByUser:function(userid) {
     return axios.get("api/bots/" + userid);
@@ -21,6 +21,10 @@ export default {
   saveBot: function(BotData) {
     return axios.post("/api/bots", BotData);
   },
+    // add a new check in to a bot in the database
+    checkInBot: function(BotData, id) {
+      return axios.post("/api/bots"+id, BotData);
+    },
   updateName: function(userid, name) {
     console.log("Updating user. Id: " + userid + ", Name: " + name)
     axios.put("/api/users/" + userid, {

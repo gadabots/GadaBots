@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API'
 import {
   Button,
  } from 'reactstrap';
@@ -56,7 +57,7 @@ onChange = e => {
        
        //this veriable will in the future be set to the length of the chekin array or checkin.length
     
-        //API.addNewLocation(this.state.id, newCheckIn);
+        API.checkInBot(this.state.id, newCheckIn);
 
          this.setState({
                   id: "",
@@ -71,11 +72,13 @@ onChange = e => {
   render() {
     return (
        <>
-        <Button onClick={this.handleShow} href='#'>
-          Check In GadaBot
-        </Button>
 
         {this.state.show ?
+
+                <Button onClick={this.handleShow} href='#'>
+                Check In GadaBot
+              </Button>
+      
        <div className="card  w-75">
        <div className="card-body">
                 <form>

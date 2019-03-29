@@ -5,13 +5,21 @@ import CheckIn from '../components/CheckIn';
 import CreateGadaBot from '../components/CreateGadaBot'
 import testsBots from "./testBots.json";
 //import UpdateUser from './components/modals/updateUsesr'
-
+import API from "../utils/API";
 class App extends Component {
 
+  
   state = {
     // will match pot with the botId here
     bot: testsBots[0],
   };
+
+  componentDidMount() {
+    API.getBot("5c9d70f94a3b0d6818a11bee").then(res => { 
+        this.setState(
+          {bot: res.data});
+    }).catch( error => console.log(error))
+}
 
   handleFactShow() {
 
@@ -32,7 +40,7 @@ class App extends Component {
                 <img className="card-img-top" src={this.state.bot.checkIns[0].pic}
                   alt={this.state.bot.name} />
               </div>
-              <div class="card-body col-9">
+              <div className="card-body col-9">
                 <div className="card-title"> <h1>{this.state.bot.name}</h1></div>
                 <p><strong>Hometown: </strong>{this.state.bot.checkIns[0].location} </p>
                 <p><strong>Created Date: </strong>{this.state.bot.checkIns[0].date} </p>
@@ -41,10 +49,10 @@ class App extends Component {
           </div>
           <br />
           <br />
-          <ul class="list-group">
+          <ul className="list-group">
             {this.state.bot.checkIns.map(checkIn => (
 
-              <li class="list-group-item">
+              <li className="list-group-item">
 
                 <div className="row">
                   <div className="col-3">
