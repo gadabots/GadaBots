@@ -14,9 +14,6 @@ const checkIn = new Schema({
 
 const botSchema = new Schema({
       name: { type: String, required: true },
-<<<<<<< HEAD
-      checkIns: [checkIn],
-=======
       checkIns:[
             {
             pic: { type: String, required: true },
@@ -25,7 +22,6 @@ const botSchema = new Schema({
             date: { type: Date, default: Date.now }
             }
       ],
->>>>>>> 09f7b059269d6cd5b03aedd169212380d7ab7d81
       userid: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 });
 
