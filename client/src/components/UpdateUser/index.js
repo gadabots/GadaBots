@@ -195,7 +195,7 @@ onChange = e => {
           </div>
         </div>
       </div>
-      : <div> Click button to show user profile update form</div>    }
+      :  <span> </span>      }
        
       </>
     );
