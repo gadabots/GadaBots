@@ -25,7 +25,7 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/botProfile" component={BotProfile} />
+          <Route exact path="/botProfile/:id" component={BotProfile} />
           <Route exact path="/userProfile" component={UserProfile} />
           <Route exact path="*" component={NoMatch} />
           </Switch>
