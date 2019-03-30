@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import { Container, Button, Card, CardTitle, CardText, CardImg } from "reactstrap";
+import {
+  Container,
+  Button,
+  Card,
+  CardTitle,
+  CardText,
+  CardImg
+} from "reactstrap";
 import API from "../../utils/API";
 // import API from "../../utils/API";
 
@@ -18,21 +25,28 @@ export class MapContainer extends Component {
       activeMarkerId: "",
       botInfo: "",
       selectedId: null,
-      InfoWindowBotName : "",
-      InfoWindowBotImage : "",
+      InfoWindowBotName: "",
+      InfoWindowBotImage: "",
       InfoWindowBotjournalEntry: "",
-      InfoWindowBotLocation : ""
+      InfoWindowBotLocation: ""
     };
   }
 
   //function when user click one of the marker
-  onMarkerClick = id => (props, marker, e) =>
+  onMarkerClick = id => (props, marker, e) => {
+    console.log("onMarkerClick", {
+      selectedId: id,
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
     this.setState({
       selectedId: id,
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  };
 
   onClose = props => {
     //to allow user close the marker and will trun show to false
@@ -45,13 +59,12 @@ export class MapContainer extends Component {
   };
 
   createMarker = () => {
-    console.log("props", this.props);
     if (this.props.botPlaces != null) {
-      return this.props.botPlaces.map(bots => (
+      return this.props.botPlaces.map(botPlace => (
         <Marker
-          key={bots._id}
-          position={{ lat: bots.lat, lng: bots.lng }}
-          onClick={this.onMarkerClick()}
+          key={botPlace._id}
+          position={{ lat: botPlace.lat, lng: botPlace.lng }}
+          onClick={this.onMarkerClick(botPlace._id)}
         />
       ));
     } else {
@@ -59,22 +72,33 @@ export class MapContainer extends Component {
     }
   };
   getOneBotInfo = () => {
-    API.getBot("5c9d706d4a3b0d6818a11bec")
-      .then(res => 
+    console.log("entering getOneBotInfo", this.state.selectedId);
+    if (this.state.selectedId == null) {
+      console.log("No bot to get!");
+      return;
+    }
+    API.getBot(this.state.selectedId)
+      .then(res => {
+        console.log("getOneBotInfo got", res.data);
         this.setState({
-          InfoWindowBotName:(res.data.name),
-          InfoWindowBotImage:(res.data.checkIns[0].pic),
-          InfoWindowBotjournalEntry: (res.data.checkIns[0].journalEntry),
-          InfoWindowBotLocation: (res.data.checkIns[0].location)
+          InfoWindowBotName: res.data.name,
+          InfoWindowBotImage: res.data.checkIns[0].pic,
+          InfoWindowBotjournalEntry: res.data.checkIns[0].journalEntry,
+          InfoWindowBotLocation: res.data.checkIns[0].location
+        });
       })
-        )
-        .then(console.log(this.state.InfoWindowBotName))
-        .catch(err => console.log(err));
+      .catch(err => console.log("getOneBotInfo error", err));
   };
-  componentDidMount(){
-    this.getOneBotInfo()
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.selectedId !== this.state.selectedId) {
+      this.getOneBotInfo();
+    }
   }
-  
+
+  componentDidMount() {
+    this.getOneBotInfo();
+  }
 
   render() {
     return (
@@ -94,13 +118,23 @@ export class MapContainer extends Component {
           onClose={this.onClose}
         >
           <Container className="m-2">
-          <Card body>
-          <CardTitle >My Name is {this.state.InfoWindowBotName}</CardTitle>
-          <CardImg top width="30px" height="250px" src={this.state.InfoWindowBotImage} alt="Card image cap" />
-          <CardText>Bot's Journal Entry: {this.state.InfoWindowBotjournalEntry}</CardText>
-          <CardText>Last Location Visited: {this.state.InfoWindowBotLocation}</CardText>
-              <Button>Check In</Button>
-          </Card>
+            <Card body>
+              <CardTitle>My Name is {this.state.InfoWindowBotName}</CardTitle>
+              <CardImg
+                top
+                width="1px"
+                height="150px"
+                src={this.state.InfoWindowBotImage}
+                alt="Card image cap"
+              />
+              <CardText>
+                Bot's Journal Entry: {this.state.InfoWindowBotjournalEntry}
+              </CardText>
+              <CardText>
+                Last Location Visited: {this.state.InfoWindowBotLocation}
+              </CardText>
+              <Button>View Bot</Button>
+            </Card>
           </Container>
         </InfoWindow>
       </Map>
