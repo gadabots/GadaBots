@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import './createGadaBot.css';
+import API from '../../utils/API'
 import {
   Button,
 
@@ -19,7 +20,7 @@ class CreateGadaBot extends Component {
         name: "",
         homeTown: "",
         journal: "", 
-        photo: ""
+        photo: "https://ap.rdcpix.com/1582692153/db1aa4a8982b018920926013ff2577f1l-m0xd-w480_h480_q80.jpg"
       };
     }
 
@@ -52,21 +53,22 @@ class CreateGadaBot extends Component {
 
       console.log(`name: ${this.state.name}` )
       console.log(`homeTown: ${this.state.homeTown}` )
-      console.log(`jounal: ${this.state.jounal}` )
+      console.log(`jounal: ${this.state.journal}` )
 
-    const   gadaBot = {
-          location: this.state.location,
+    const gadaBot = {
+          name:this.state.name, 
+          location: this.state.homeTown,
           journalEntry: this.state.journal,
           photo:this.state.photo
        }
-       
-       //this will have a new location for bot, but not give it a name
-     //  API.addNewLocation(this.state.id, 0, gadaBot) 
+      console.log(gadaBot)
+       //create a new bot
+      API.saveBot(gadaBot) 
        
           .then(this.setState({
             homeTown: "",
             journal: "", 
-            photo: ""
+         //   photo: ""
                 }))  
        .catch(err => console.log(err));
   

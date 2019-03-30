@@ -7,16 +7,19 @@ import CreateGadaBot from '../components/CreateGadaBot'
 import testBots from "./testBots.json";
 //import UpdateUser from './components/modals/updateUsesr'
 
+
 const wtf = require('wtf_wikipedia');
 
 class App extends Component {
 
+  
   state = {
     // will match pot with the botId here
     bot: testBots[0],
     sentence: "",
     location: testBots[0].location
   };
+
 
   handleFactShow(city3) {
 
@@ -30,6 +33,7 @@ class App extends Component {
         //concatenate or loop to tailor blurb length
         console.log(doc.sentences(0).text());
 
+
         this.setState({sentence: doc.sentences(0).text()})
     })
   }
@@ -37,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        < CheckIn checkInArray={this.state.bot.checkIns}/>
+        < CheckIn />
         < CreateGadaBot />
         <br />
         <br />
@@ -48,7 +52,7 @@ class App extends Component {
                 <img className="card-img-top" src={this.state.bot.checkIns[0].pic}
                   alt={this.state.bot.name} />
               </div>
-              <div class="card-body col-9">
+              <div className="card-body col-9">
                 <div className="card-title"> <h1>{this.state.bot.name}</h1></div>
                 <p><strong>Hometown: </strong>{this.state.bot.checkIns[0].location} </p>
                 <p><strong>Created Date: </strong>{this.state.bot.checkIns[0].date} </p>
@@ -57,9 +61,10 @@ class App extends Component {
           </div>
           <br />
           <br />
-          <ul class="list-group">
+          <ul className="list-group">
             {this.state.bot.checkIns.map(checkIn => (
               <FunFact pic={checkIn.pic}  location={checkIn.location}  date={checkIn.date}  journalEntry={checkIn.journalEntry} />
+
             ))}
           </ul>
 

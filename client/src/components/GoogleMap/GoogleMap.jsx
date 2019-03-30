@@ -1,32 +1,34 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import { Container } from "reactstrap";
+import { Container, Button, Card, CardTitle, CardText, CardImg } from "reactstrap";
+import API from "../../utils/API";
 // import API from "../../utils/API";
 
 const mapStyles = {
   width: "100%",
-  height: "100%"
+  height: "200%"
 };
 
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      botPlacesTest:[
-        {_id:1, lat: 42.02, lng: -77.01 },
-        {_id:2, lat: 42.03, lng: -77.02 },
-        {_id:3, lat: 41.03, lng: -77.04 },
-        {_id:4, lat: 42.05, lng: -77.02 }
-    ],
       showingInfoWindow: false,
       activeMarker: {},
-      activeMarkerId : ""
+      activeMarkerId: "",
+      botInfo: "",
+      selectedId: null,
+      InfoWindowBotName : "",
+      InfoWindowBotImage : "",
+      InfoWindowBotjournalEntry: "",
+      InfoWindowBotLocation : ""
     };
   }
 
   //function when user click one of the marker
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = id => (props, marker, e) =>
     this.setState({
+      selectedId: id,
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
@@ -41,17 +43,40 @@ export class MapContainer extends Component {
       });
     }
   };
-  
-  createMarker = () =>
-    this.state.botPlacesTest.map(bots => (
-      <Marker
-        key={bots._id}
-        position={{ lat: bots.lat, lng: bots.lng }}
-        onClick={this.onMarkerClick}
-      />
-    ));
 
-    render() {
+  createMarker = () => {
+    console.log("props", this.props);
+    if (this.props.botPlaces != null) {
+      return this.props.botPlaces.map(bots => (
+        <Marker
+          key={bots._id}
+          position={{ lat: bots.lat, lng: bots.lng }}
+          onClick={this.onMarkerClick()}
+        />
+      ));
+    } else {
+      return null;
+    }
+  };
+  getOneBotInfo = () => {
+    API.getBot("5c9d706d4a3b0d6818a11bec")
+      .then(res => 
+        this.setState({
+          InfoWindowBotName:(res.data.name),
+          InfoWindowBotImage:(res.data.checkIns[0].pic),
+          InfoWindowBotjournalEntry: (res.data.checkIns[0].journalEntry),
+          InfoWindowBotLocation: (res.data.checkIns[0].location)
+      })
+        )
+        .then(console.log(this.state.InfoWindowBotName))
+        .catch(err => console.log(err));
+  };
+  componentDidMount(){
+    this.getOneBotInfo()
+  }
+  
+
+  render() {
     return (
       <Map
         google={this.props.google}
@@ -62,7 +87,6 @@ export class MapContainer extends Component {
           lng: -122.428093
         }}
       >
-        {console.log(this.props.saveBots)}
         {this.createMarker()}
         <InfoWindow
           marker={this.state.activeMarker}
@@ -70,7 +94,13 @@ export class MapContainer extends Component {
           onClose={this.onClose}
         >
           <Container className="m-2">
-          {/* {console.log(console.log(this.state.activeMarkerId))} */}
+          <Card body>
+          <CardTitle >My Name is {this.state.InfoWindowBotName}</CardTitle>
+          <CardImg top width="30px" height="250px" src={this.state.InfoWindowBotImage} alt="Card image cap" />
+          <CardText>Bot's Journal Entry: {this.state.InfoWindowBotjournalEntry}</CardText>
+          <CardText>Last Location Visited: {this.state.InfoWindowBotLocation}</CardText>
+              <Button>Check In</Button>
+          </Card>
           </Container>
         </InfoWindow>
       </Map>

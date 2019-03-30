@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const newBot = new Bot ({
         name:  req.body.name,
-        checkIns: {
+        checkIns:{
             pic: req.body.pic,
             location:  req.body.location,
             journalEntry:  req.body.journalEntry
@@ -39,9 +39,9 @@ router.delete("/:id", (req, res) => {
 
 //update bot by using id
 router.put("/:id", (req, res) => {
+    console.log(req.body, req.params.id )
     Bot.findByIdAndUpdate(
-        req.params.id,
-        req.body,
+        req.params.id, req.body,
         {new : true},
         (error, bot)=>{
             if (error) return res.status(500).send(error);
