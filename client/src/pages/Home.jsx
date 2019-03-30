@@ -8,33 +8,29 @@ import {
   Col,
   CardTitle,
   CardText,
-  Button
+  Button,
+  CardBody
 } from "reactstrap";
 
 class Home extends Component {
   state = {};
   render() {
     return (
-      <Container className="m-2">
+      <Container >
         <Row>
           <Col lg="3">
             <Card body>
               <CardTitle>Special Title Treatment</CardTitle>
               <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-                With supporting text below as a natural lead-in to additional
-                content.
-                With supporting text below as a natural lead-in to additional
-                content.
+                HOW TO USE OUR APP
               </CardText>
               <Button>Go somewhere</Button>
             </Card>
           </Col>
-          <Col >
-            {/* <Card body> */}
+          <Col lg="8">
+            <CardBody>
             <BotsOnMap />
-            {/* </Card> */}
+            </CardBody>
           </Col>
         </Row>
       </Container>
