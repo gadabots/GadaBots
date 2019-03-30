@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
 //import './createGadaBot.css';
 import CheckIn from '../components/CheckIn';
+import FunFact from '../components/FunFact';
 //import UpdateUser from './components/updateUser'
 import CreateGadaBot from '../components/CreateGadaBot'
-import testsBots from "./testBots.json";
+import testBots from "./testBots.json";
 //import UpdateUser from './components/modals/updateUsesr'
-import API from "../utils/API";
+
+
+const wtf = require('wtf_wikipedia');
+
 class App extends Component {
 
   
   state = {
     // will match pot with the botId here
-    bot: testsBots[0],
+    bot: testBots[0],
+    sentence: "",
+    location: testBots[0].location
   };
 
-  componentDidMount() {
-    API.getBot("5c9d70f94a3b0d6818a11bee").then(res => { 
-        this.setState(
-          {bot: res.data});
-    }).catch( error => console.log(error))
-}
 
-  handleFactShow() {
+  handleFactShow(city3) {
 
-    alert("the value of show ifact is: ")
+    // const city="New York City"; //works
+    // const city2="Edmonds, Washington" //works
+    // const city3="Arendal" //works
+    
+    wtf.fetch(city3).then(doc => {    
+   
+        doc.sentences(0).text();
+        //concatenate or loop to tailor blurb length
+        console.log(doc.sentences(0).text());
+
+
+        this.setState({sentence: doc.sentences(0).text()})
+    })
   }
 
   render() {
@@ -51,26 +63,7 @@ class App extends Component {
           <br />
           <ul className="list-group">
             {this.state.bot.checkIns.map(checkIn => (
-
-              <li className="list-group-item">
-
-                <div className="row">
-                  <div className="col-3">
-                    <img className="card-img-top" src={checkIn.pic}
-                      alt={checkIn.location} />
-                  </div>
-                  <div className="col-9">
-                    <div className="card-body">
-                      <h4>{checkIn.location}</h4>
-                      <p className="card-text"> {checkIn.journalEntry}</p>
-                      <small>{checkIn.date}</small>
-                    </div>
-                  </div>
-
-                </div>
-
-
-              </li>
+              <FunFact pic={checkIn.pic}  location={checkIn.location}  date={checkIn.date}  journalEntry={checkIn.journalEntry} />
 
             ))}
           </ul>
