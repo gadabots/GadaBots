@@ -13,7 +13,7 @@ class CheckIn extends Component {
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
-    this.state = {
+    this.state = {          
       show: false,
       id: "",
       location: "",
@@ -38,44 +38,56 @@ onChange = e => {
   onSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    
-    
-    //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
-    let id = true;
-    if (this.state.id !== id) {
-      alert("Please enter a valid id")
-    } else if(!this.state.location) {
-       alert("please add a new location")
-    }
 
-     else  {
-     const newCheckIn = {
-          location: this.state.location,
-          journalEntry: this.state.journal,
-          photo:this.state.photo
-       }
+
+      API.getBot(this.state.id).then(res => { 
+        if (res.data) {
+          this.setState(
+            {bot: res.data});
+
+            if(!this.state.location) {
+              alert("please add a new location")
+           }
        
-       //this veriable will in the future be set to the length of the chekin array or checkin.length
-    
-        API.checkInBot(this.state.id, newCheckIn);
+            else  {
+            const newCheckIn = {
+                 location: this.state.location,
+                 journalEntry: this.state.journal,
+                 photo:this.state.photo
+              }
+              
+            console.log("CheckIn:" + newCheckIn.location);
+           console.log("Bot:" + this.state.bot);
+            this.state.bot.checkIns.push(newCheckIn)
+            console.log("data to be stored: "+ this.state.bot)
+          API.checkInBot(this.state.id, this.state.bot).catch( error => console.log(error));
+       
+                this.setState({
+                         id: "",
+                         location: "",
+                         journal: "",
+                         show: false,
+                       })
+                   
+            }
+        } else  {
+          alert("please enter a valid GadaBot ID")
+        }
 
-         this.setState({
-                  id: "",
-                  location: "",
-                  journal: "",
-                  show: false,
-                })
-            
-     }
+      }).catch( error => console.log(error))
+  
+    //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
+    
+  
 
   }
   render() {
     return (
        <>
 
-<Button onClick={this.handleShow} href='#'>
-                Check In GadaBot
-              </Button>
+          <Button onClick={this.handleShow} href='#'>
+           Check In GadaBot
+          </Button>
         {this.state.show ?
 
       
@@ -104,7 +116,7 @@ onChange = e => {
                     onChange={this.onChange}/>
                 </div>
                 <div className="form-group">
-                  <label>
+                  <label>  
                     Write a Journal Entry for your GadaBot
                   </label>
                   <textarea  

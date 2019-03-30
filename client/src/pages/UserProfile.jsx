@@ -3,6 +3,7 @@ import CheckIn from "../components/CheckIn";
 import UpdateUser from "../components/UpdateUser";
 import CreateGadaBot from "../components/CreateGadaBot";
 import testsBots from "./testBots.json";
+import API from "../utils/API";
 
 import {
     Card,
@@ -20,13 +21,23 @@ import PropTypes from 'prop-types';
 
 class UserProfile extends Component {
     state = {
-        bot: testsBots
+        bots: testsBots
     };
+
 
     static propTypes = {
         auth: PropTypes.object.isRequired
     };
 
+        
+    componentDidMount() {
+        console.log(this.props.auth)
+    //     API.getBotsByUser(this.props.auth).then(res => { 
+    //         this.setState(
+    //           {bots: res.data});
+    //     }).catch( error => console.log(error))
+     }
+    
     render() {
         // console.log(this.props.auth);
         const { user } = this.props.auth;
@@ -64,7 +75,7 @@ class UserProfile extends Component {
                             <CardTitle><h4>Your GadaBot(s)</h4></CardTitle>
 
                             <ul>
-                                {this.state.bot.map(bot => (
+                                {this.state.bots.map(bot => (
                                     <li className="list-group-item list-group-item-action">
 
                                         <div  key={bot.id}>
