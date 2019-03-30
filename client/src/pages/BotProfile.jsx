@@ -6,20 +6,30 @@ import FunFact from '../components/FunFact';
 import CreateGadaBot from '../components/CreateGadaBot'
 import testBots from "./testBots.json";
 //import UpdateUser from './components/modals/updateUsesr'
+import API from "../utils/API";
 
 
 const wtf = require('wtf_wikipedia');
 
 class App extends Component {
 
-  
   state = {
     // will match pot with the botId here
     bot: testBots[0],
-    sentence: "",
+    sentence: {},
     location: testBots[0].location
   };
 
+  componentDidMount() {
+  //  console.log(this.props.auth)
+    API.getBot("5c9d7e82d01e7028a025a3f7").then(res => { 
+        this.setState(
+          {bot: res.data,
+          location: res.data.location
+          });
+    }).catch( error => console.log(error))
+   
+ }
 
   handleFactShow(city3) {
 
@@ -63,8 +73,11 @@ class App extends Component {
           <br />
           <ul className="list-group">
             {this.state.bot.checkIns.map(checkIn => (
-              <FunFact pic={checkIn.pic}  location={checkIn.location}  date={checkIn.date}  journalEntry={checkIn.journalEntry} />
-
+              <FunFact 
+              pic={checkIn.pic}  
+              location={checkIn.location}  
+              date={checkIn.date}  
+              journalEntry={checkIn.journalEntry} />
             ))}
           </ul>
 

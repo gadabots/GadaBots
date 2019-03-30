@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckIn from '../CheckIn';
+//import CheckIn from '../CheckIn';
 import testBots from "../../pages/testBots.json";
 const wtf = require('wtf_wikipedia');
 
@@ -7,12 +7,13 @@ const wtf = require('wtf_wikipedia');
 class FunFact extends Component {
 
   state = {
-    bot: testBots[0],
-    location: testBots[0].location,
+   // bot: testBots[0],
+   // location: testBots[0].location,
     sentence: "loading ..."
   }
   
   componentDidMount() {
+    
     //do the API req .then(function() => this.setState())
     //store in state  
 
