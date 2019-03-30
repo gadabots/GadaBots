@@ -3,15 +3,6 @@ const Schema = mongoose.Schema;
 const path = require('path');
 
 
-const checkIn = new Schema({
-       pic: String,
-       location: { type: String, required: true },
-       journalEntry: String,
-       date: { type: Date, default: Date.now }
-      
-});
-
-
 const botSchema = new Schema({
       name: { type: String, required: true },
       checkIns:[

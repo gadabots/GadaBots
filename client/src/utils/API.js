@@ -22,8 +22,8 @@ export default {
     return axios.post("/api/bots", BotData);
   },
     // add a new check in to a bot in the database
-    checkInBot: function(BotData, id) {
-      return axios.post("/api/bots"+id, BotData);
+  checkInBot: function(id, BotData) {
+      return axios.put("/api/bots/"+id, BotData);
     },
   updateName: function(userid, name) {
     console.log("Updating user. Id: " + userid + ", Name: " + name)
