@@ -19,11 +19,10 @@ class FunFact extends Component {
 
     wtf.fetch(this.props.location).then(doc => {    
    
-      doc.sentences(0).text();
-      //concatenate or loop to tailor blurb length
-     // console.log(doc.sentences(0).text());
+     var cityInfo = doc.sentences(0).text()+doc.sentences(1).text()+doc.sentences(2).text();
+      //put in spaces between sentences
 
-      this.setState({sentence: doc.sentences(0).text()})
+      this.setState({sentence: cityInfo});
   })
 
   }
