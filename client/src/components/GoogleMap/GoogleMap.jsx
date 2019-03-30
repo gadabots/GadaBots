@@ -8,8 +8,9 @@ import {
   CardText,
   CardImg
 } from "reactstrap";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import API from "../../utils/API";
-// import API from "../../utils/API";
 
 const mapStyles = {
   width: "100%",
@@ -133,7 +134,13 @@ export class MapContainer extends Component {
               <CardText>
                 Last Location Visited: {this.state.InfoWindowBotLocation}
               </CardText>
-              <Button>View Bot</Button>
+              <Container>
+                <Router>
+                  <Link to={`/botProfile`} state={this.state.selectedId}>
+                  <Button >View Bot</Button>
+                  </Link>
+                </Router>
+              </Container>
             </Card>
           </Container>
         </InfoWindow>

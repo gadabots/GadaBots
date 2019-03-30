@@ -30,7 +30,7 @@ class FunFact extends Component {
   render() {
     return (
         // <CheckIn pic={checkIn.pic} location={checkIn.location} journalEntry={checkIn.journalEntry} />
-        <li class="list-group-item">
+        <li className="list-group-item">
           <div className="row">
             <div className="col-3">
               <img className="card-img-top" src={this.props.pic}
