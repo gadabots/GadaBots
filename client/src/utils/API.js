@@ -34,7 +34,13 @@ export default {
     }).then(
       // Reload the whole page to show the new name
       res => window.location.reload()
-    );
-  }
-
+    )},
+  updateUserImage: function(userid, url) {
+    console.log("updateUserImage: " + userid + url)
+    axios.put("api/user/" + userid, {
+      image_url: url
+    }).then(
+      // Reload the whole page to show the new image
+      res => window.location.reload() 
+    )}    
 };
