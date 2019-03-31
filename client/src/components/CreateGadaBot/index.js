@@ -5,6 +5,7 @@ import {
   Button,
 
 } from 'reactstrap';
+import ReactS3Uploader from "react-s3-uploader";
 
 
 class CreateGadaBot extends Component {
@@ -54,12 +55,13 @@ class CreateGadaBot extends Component {
       console.log(`name: ${this.state.name}` )
       console.log(`homeTown: ${this.state.homeTown}` )
       console.log(`jounal: ${this.state.journal}` )
+      console.log(`photo: ${this.state.photo}` )
 
     const gadaBot = {
           name:this.state.name, 
           location: this.state.homeTown,
           journalEntry: this.state.journal,
-          photo:this.state.photo
+          photo: this.state.photo
        }
       console.log(gadaBot)
        //create a new bot
@@ -68,7 +70,7 @@ class CreateGadaBot extends Component {
           .then(this.setState({
             homeTown: "",
             journal: "", 
-         //   photo: ""
+            //   photo: ""
                 }))  
        .catch(err => console.log(err));
   
@@ -102,7 +104,7 @@ class CreateGadaBot extends Component {
                 </div>
                 <div className="form-group">
                   <label>
-                    Where is your Gada-Bot now?
+                    Where is your GadaBot now?
                   </label>
                     <input  
                     className="form-control" 
@@ -125,7 +127,15 @@ class CreateGadaBot extends Component {
                   onChange={this.handleInputChange}/>
                 </div>
               <div className="form-group">
-                <div className="custom-file">
+              <div>
+                  {/* TODO: Fix styles and add label */}
+                <img src={this.state.photo} alt = "Bot" />
+                <ReactS3Uploader 
+                            signingUrl="/s3/sign"
+                            autoUpload="true" 
+                            onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/>
+                </div>
+                {/* <div className="custom-file">
                   <input type="file" 
                   className="custom-file-input" 
                   id="customFile" 
@@ -134,7 +144,7 @@ class CreateGadaBot extends Component {
                   className="custom-file-label" 
                   name="photo" >Upload a Pic
                   </label>
-                </div>
+                </div> */}
                 <button
                   type="submit"
                   className="btn btn-primary"
