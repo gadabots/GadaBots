@@ -24,15 +24,21 @@ class App extends Component {
           location: res.data.checkIns[0].location,
           bot_Name: res.data.name,
           Created_Date: res.data.checkIns[0].date,
-          Bot_Image: res.data.checkIns[0].pic
+          Bot_Image: res.data.checkIns[0].pic, 
+          checkIns: res.data.checkIns
         });
       })
       .catch(error => console.log(error));
   };
 
   componentDidMount() {
-    this.getOneBotForBotProfile();
+    if (this.state.bot_Id === null) {
+
+      this.getOneBotForBotProfile();
+      console.log("the sate is:", this.state)
+    }
   }
+
 
   render() {
     return (
@@ -70,9 +76,17 @@ class App extends Component {
           </div>
           <br />
           <br />
-          <div className="text-primary">
-            <FunFact location={this.state.location} />
-          </div>
+         {this.state.checkIns ? <ul className="list-group">
+            {this.state.checkIns.map(checkIn => (
+              <FunFact
+                key={checkIn._id}
+                pic={checkIn.pic}
+                location={checkIn.location}
+                date={checkIn.date}
+                journalEntry={checkIn.journalEntry}
+              />
+            ))}
+          </ul> : <span></span>} 
         </div>
       </div>
     );
