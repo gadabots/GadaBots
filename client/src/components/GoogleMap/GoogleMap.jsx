@@ -136,7 +136,7 @@ export class MapContainer extends Component {
               </CardText>
               <Container>
                 <Router>
-                  <Link to={`/botProfile`} state={this.state.selectedId}>
+                  <Link to={`/botProfile/${this.state.selectedId}` } state={this.state.selectedId}>
                   <Button >View Bot</Button>
                   </Link>
                 </Router>
