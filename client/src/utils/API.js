@@ -12,9 +12,11 @@ export default {
   },
   // Gets the bot with the given id
   getBot: function(id) {
+    console.log("http://localhost:8080/api/bots/" + id)
     return axios.get("/api/bots/" + id);
   },
   getBotsByUser:function(userid) {
+    console.log("http://localhost:8080/api/bots/" + userid)
     return axios.get("api/bots/" + userid);
   },
   // Saves an bot to the database
