@@ -42,5 +42,11 @@ export default {
     }).then(
       // Reload the whole page to show the new image
       res => window.location.reload() 
-    )}    
+    )},
+    updateUserBots: function(userid, bots) {
+      console.log(bots)
+      axios.put("api/users/" + userid, {
+        bots: bots
+      })
+    }  
 };

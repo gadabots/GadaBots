@@ -30,13 +30,15 @@ class UserProfile extends Component {
     };
 
         
-    componentDidMount() {
-        console.log(this.props.auth)
-    //     API.getBotsByUser(this.props.auth).then(res => { 
-    //         this.setState(
-    //           {bots: res.data});
-    //     }).catch( error => console.log(error))
-     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.auth.user === null && this.props.auth.user !== null
+            ){
+                console.log(this.props.auth.user.bots)
+                this.setState(
+                  {bots: this.props.auth.user.bots});
+       
+        }
+    }
     
     render() {
         // console.log(this.props.auth);
@@ -54,14 +56,14 @@ class UserProfile extends Component {
                 <br />
 
                 <center><h1>{`Welcome ${user.name}`}!</h1>
-                <CheckIn />
-                <CreateGadaBot />
+                <CheckIn user={user}/>
+                <CreateGadaBot user={user}/>
                 <br /><br />
                 </center>
                 <Row>
                     <Col sm="4">
                         <Card>
-                            <CardImg top width="100%" src={user.image_url} alt="Card image cap" />
+                            <CardImg top width="100%" src="https://steembottracker.com/img/bot_logo.png" alt="Card image cap" />
                             <CardBody>
                                 <CardTitle><h5>Your Info</h5></CardTitle>
                                 <CardText>Name: {user.name}</CardText>
