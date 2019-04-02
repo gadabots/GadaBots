@@ -109,11 +109,12 @@ onChange = e => {
        <div className="card  w-75">
        <div className="card-body ">
                 <form>
-                <div className="form-group ">
-                  <label>Enter Your GaddaBot's ID</label>
-                    <input className="form-control" 
+
+                <div className="form-group">
+                  <label>Enter Your GadaBot's ID</label>
+                <div className="form-group ">                
                     id="gaddaBot-id"
-                    placeholder="1234..."
+                    placeholder="E.g. 12"
                     name="id" 
                     value={this.state.name}  
                     onChange={this.onChange}/>
@@ -125,7 +126,7 @@ onChange = e => {
                     <input  
                     className="form-control" 
                     id="gaddaBot-location"
-                    placeholder="your address here"
+                    placeholder="Your address here"
                     name="location"
                     value={this.state.location} 
                     onChange={this.onChange}/>
@@ -137,7 +138,7 @@ onChange = e => {
                   <textarea  
                   className="form-control" 
                   id="journal" 
-                  placeholder="Today we went to the park."
+                  placeholder="Memories from this holiday..."
                   name="journal" 
                   value={this.state.journal} 
                   onChange={this.onChange}/>
