@@ -6,22 +6,7 @@ import Geocode from "react-geocode";
 class BotsOnMap extends Component {
   //Setting a state for ver that will hold bots and places
   state = {
-    // saveBots is an array of objects with the structure:
-    // "userid": [],
-    // "_id": "5c9d706d4a3b0d6818a11bec",     ID of the BOT
-    // "name": "test-1",
-    // "checkIns": [{
-    //   "date": "2019-03-29T01:10:05.173Z",
-    //   "_id": "5c9d706d4a3b0d6818a11bed",    ID of the CHECKIN
-    //   "pic": "https://steembottracker.com/img/bot_logo.png",
-    //   "location": "Everett, WA",
-    //   "journalEntry": "NOW"
-    // }],
     saveBots: [],
-    // botPlaces is an array of objects with the structure:
-    // _id: botCityAndId[i].botsId,            ID of the BOT
-    // lat: lat,
-    // lng: lng
     botPlaces: []
   };
 

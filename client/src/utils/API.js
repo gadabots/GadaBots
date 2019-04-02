@@ -42,5 +42,7 @@ export default {
     }).then(
       // Reload the whole page to show the new image
       res => window.location.reload() 
-    )}    
+    )}
+    
+    
 };

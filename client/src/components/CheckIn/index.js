@@ -86,16 +86,16 @@ onChange = e => {
     return (
        <>
 
-          <Button onClick={this.handleShow} href='#'>
+          <Button onClick={this.handleShow} href='#' className="mt-2 mb-2">
            Check In GadaBot
           </Button>
         {this.state.show ?
 
       
        <div className="card  w-75">
-       <div className="card-body">
+       <div className="card-body ">
                 <form>
-                <div className="form-group">
+                <div className="form-group ">
                   <label>Enter Your GaddaBot's ID</label>
                     <input className="form-control" 
                     id="gaddaBot-id"
