@@ -42,6 +42,7 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="container text-capitalize">
         <CheckIn />
         <CreateGadaBot />
@@ -76,17 +77,22 @@ class App extends Component {
           </div>
           <br />
           <br />
+          <ul className="list-group">
+
          {this.state.checkIns ? <ul className="list-group">
             {this.state.checkIns.map(checkIn => (
+
               <FunFact
                 key={checkIn._id}
                 pic={checkIn.pic}
                 location={checkIn.location}
                 date={checkIn.date}
                 journalEntry={checkIn.journalEntry}
-              />
+              /> 
             ))}
+
           </ul> : <span></span>} 
+
         </div>
       </div>
     );

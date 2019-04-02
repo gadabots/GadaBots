@@ -3,7 +3,7 @@ import API from '../../utils/API'
 import {
   Button,
  } from 'reactstrap';
- import ReactS3Uploader from "react-s3-uploader";
+ //import ReactS3Uploader from "react-s3-uploader";
 
 
 class CheckIn extends Component {
@@ -13,8 +13,9 @@ class CheckIn extends Component {
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
-    this.state = {          
+    console.log(props)
+    this.state = {  
+     user: props.user ? props.user: [],
       show: false,
       id: "",
       location: "",
@@ -51,24 +52,37 @@ onChange = e => {
            }
        
             else  {
+              console.log("Bot before checkIn: ", this.state.bot)
             const newCheckIn = {
                  location: this.state.location,
                  journalEntry: this.state.journal,
                  photo:this.state.photo
               }
               
-            console.log("CheckIn:" + newCheckIn.location);
-           console.log("Bot:" + this.state.bot);
-            this.state.bot.checkIns.push(newCheckIn)
-            console.log("data to be stored: "+ this.state.bot)
-        //  API.checkInBot(this.state.id, this.state.bot).catch( error => console.log(error));
-       
-                this.setState({
-                         id: "",
-                         location: "",
-                         journal: "",
-                         show: false,
-                       })
+          console.log("CheckIn:" + newCheckIn.location);
+          console.log("Bot:" + this.state.bot);
+           this.state.bot.checkIns.push(newCheckIn)
+          
+           if (this.state.user) {
+            this.state.bot.userid.push(this.state.user._id)
+           }
+           
+           console.log("data to be stored: "+ this.state.bot)
+          API.checkInBot(this.state.id, this.state.bot).catch( error => console.log(error));
+
+          if (this.state.user) {
+          this.state.user.bots.push(this.state.bot)
+          console.log(this.state.user)
+          API.updateUserBots(this.state.userId, this.state.userBots)
+          
+          this.setState({
+            id: "",
+            location: "",
+            journal: "",
+            show: false,
+          });
+          }
+         
                    
             }
         } else  {
@@ -131,10 +145,10 @@ onChange = e => {
                 <div>
                   {/* TODO: Fix styles and add label */}
                 <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
-                <ReactS3Uploader 
+                {/* <ReactS3Uploader 
                             signingUrl="/s3/sign"
                             autoUpload="true" 
-                            onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/>
+                            onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/> */}
                 </div>
               {/* <div className="form-group">
                 <div className="custom-file">

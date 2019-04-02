@@ -5,20 +5,22 @@ import { Button } from "reactstrap";
 import ReactS3Uploader from "react-s3-uploader";
 
 class CreateGadaBot extends Component {
-  constructor(props, context) {
-    super(props, context);
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
-    this.state = {
-      show: false,
-      name: "",
-      homeTown: "",
-      journal: "",
-      photo: ""
-    };
-  }
+    constructor(props, context) {
+      super(props, context);
+  
+      this.handleShow = this.handleShow.bind(this);
+      this.handleClose = this.handleClose.bind(this);
+  
+      this.state = {
+        userId: props.user._id,
+        show: false,
+        name: "",
+        homeTown: "",
+        journal: "", 
+        photo: "https://ap.rdcpix.com/1582692153/db1aa4a8982b018920926013ff2577f1l-m0xd-w480_h480_q80.jpg"
+      };
+    }
 
   handleClose() {
     this.setState({ show: false });
@@ -71,6 +73,7 @@ class CreateGadaBot extends Component {
       alert("Please give your GadaBot a name and Home Town.");
     }
   };
+
 
   render() {
     return (

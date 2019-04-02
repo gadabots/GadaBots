@@ -30,13 +30,15 @@ class UserProfile extends Component {
     };
 
         
-    componentDidMount() {
-        console.log(this.props.auth)
-    //     API.getBotsByUser(this.props.auth).then(res => { 
-    //         this.setState(
-    //           {bots: res.data});
-    //     }).catch( error => console.log(error))
-     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.auth.user === null && this.props.auth.user !== null
+            ){
+                console.log(this.props.auth.user.bots)
+                this.setState(
+                  {bots: this.props.auth.user.bots});
+       
+        }
+    }
     
     render() {
         // console.log(this.props.auth);
@@ -54,8 +56,8 @@ class UserProfile extends Component {
                 <br />
 
                 <center><h1>{`Welcome ${user.name}`}!</h1>
-                <CheckIn />
-                <CreateGadaBot />
+                <CheckIn user={user}/>
+                <CreateGadaBot user={user}/>
                 <br /><br />
                 </center>
                 <Row>

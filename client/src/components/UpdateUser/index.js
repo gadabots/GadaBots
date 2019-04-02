@@ -13,7 +13,7 @@ class UpdateUser extends Component {
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    console.log(props);
+    //console.log(props);
     this.state = {
       show: false,
       userid: props.user._id,
