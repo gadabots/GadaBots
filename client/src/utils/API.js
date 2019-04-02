@@ -49,4 +49,5 @@ export default {
         bots: bots
       })
     }  
+    )}
 };
