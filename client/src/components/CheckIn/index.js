@@ -3,7 +3,7 @@ import API from '../../utils/API'
 import {
   Button,
  } from 'reactstrap';
- //import ReactS3Uploader from "react-s3-uploader";
+ import ReactS3Uploader from "react-s3-uploader";
 
 
 class CheckIn extends Component {
@@ -23,6 +23,7 @@ class CheckIn extends Component {
       photo: ""
     };
   }
+
 
   handleClose() {
     this.setState({ show: false });
@@ -81,107 +82,103 @@ onChange = e => {
             journal: "",
             show: false,
           });
-          }
-         
+          }       
                    
             }
         } else  {
           alert("please enter a valid GadaBot ID")
         }
 
-      }).catch( error => console.log(error))
+        }).catch( error => console.log(error))
   
-    //let c = ? //setts the value of the number of checkins. In the future the c will be equal to the number of checkins in the checkin array
-    
-  
-
-  }
-  render() {
-    return (
+        }
+        render() {
+          return (
+          )
+        
+       
        <>
 
           <Button onClick={this.handleShow} href='#' className="mt-2 mb-2">
            Check In GadaBot
           </Button>
-        {this.state.show ?
+        // {this.state.show ?
 
       
        <div className="card  w-75">
        <div className="card-body ">
-                <form>
-
+              <form>
                 <div className="form-group">
                   <label>Enter Your GadaBot's ID</label>
-                <div className="form-group ">                
-                    id="gaddaBot-id"
-                    placeholder="E.g. 12"
-                    name="id" 
-                    value={this.state.name}  
-                    onChange={this.onChange}/>
+                  <input className="form-control"               
+                        id="gaddaBot-id"
+                        placeholder="E.g. 12"
+                        name="id" 
+                        value={this.state.name}  
+                        onChange={this.onChange}/>
+                    </div>
+                    <div className="form-group">
+                      <label>
+                        Where is your GadaBot now?
+                      </label>
+                        <input  
+                        className="form-control" 
+                        id="gaddaBot-location"
+                        placeholder="Your address here"
+                        name="location"
+                        value={this.state.location} 
+                        onChange={this.onChange}/>
+                    </div>
+                    <div className="form-group">
+                      <label>  
+                        Write a Journal Entry for your GadaBot
+                      </label>
+                      <textarea  
+                        className="form-control" 
+                        id="journal" 
+                        placeholder="Memories from this holiday..."
+                        name="journal" 
+                        value={this.state.journal} 
+                        onChange={this.onChange}/>
+                    </div>
+                    <div>
+                      {/* TODO: Fix styles and add label */}
+                      <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
+                      <ReactS3Uploader 
+                        signingUrl="/s3/sign"
+                        autoUpload="true" 
+                        onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/>
+                    </div>
+                      {/* <div className="form-group">
+                        <div className="custom-file">
+                          <input type="file" 
+                          className="custom-file-input" 
+                          id="customFile" 
+                          name="photo"/>
+                          <label 
+                          className="custom-file-label" 
+                          name="photo" >Upload a Pic
+                          </label>
+                        </div>
+                      </div> */}
+                    <button 
+                      type="submit" 
+                      className="btn btn-primary"
+                      onClick={this.onSubmit}
+                      >Check In
+                    </button>
+                  </form>
+                    <button type="button" 
+                      className="btn btn-secondary" 
+                      name="close"
+                      onClick={this.handleClose}
+                      >Close</button>
                 </div>
-                <div className="form-group">
-                  <label>
-                    Where is your GadaBot now?
-                  </label>
-                    <input  
-                    className="form-control" 
-                    id="gaddaBot-location"
-                    placeholder="Your address here"
-                    name="location"
-                    value={this.state.location} 
-                    onChange={this.onChange}/>
-                </div>
-                <div className="form-group">
-                  <label>  
-                    Write a Journal Entry for your GadaBot
-                  </label>
-                  <textarea  
-                  className="form-control" 
-                  id="journal" 
-                  placeholder="Memories from this holiday..."
-                  name="journal" 
-                  value={this.state.journal} 
-                  onChange={this.onChange}/>
-                </div>
-                <div>
-                  {/* TODO: Fix styles and add label */}
-                <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
-                {/* <ReactS3Uploader 
-                            signingUrl="/s3/sign"
-                            autoUpload="true" 
-                            onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/> */}
-                </div>
-              {/* <div className="form-group">
-                <div className="custom-file">
-                  <input type="file" 
-                  className="custom-file-input" 
-                  id="customFile" 
-                  name="photo"/>
-                  <label 
-                  className="custom-file-label" 
-                  name="photo" >Upload a Pic
-                  </label>
-                </div>
-              </div> */}
-                <button 
-                type="submit" 
-                className="btn btn-primary"
-                onClick={this.onSubmit}
-                >Check In</button>
-              </form>
-              <button type="button" 
-              className="btn btn-secondary" 
-              name="close"
-              onClick={this.handleClose}
-              >Close</button>
-              </div>
-           </div>  
-       : <span> </span>    }
+              </div>    
+         : <span> </span>  }
        
-      </>
-           
+      </>           
     );
   }
 }
-
 export default CheckIn;
