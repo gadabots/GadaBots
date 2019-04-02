@@ -70,8 +70,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <CheckIn />
-        <CreateGadaBot />
+       <CheckIn/>
         <br />
         <br />
         <div alt="becauseItGotMad">
@@ -102,16 +101,16 @@ class App extends Component {
           </div>
           <br />
           <br />
-          {/* <ul className="list-group">
-            {this.state.bot.checkIns.map(checkIn => (
+          <ul className="list-group">
+            {/* {this.state.bot.checkIns.map(checkIn => (
               <FunFact
                 pic={checkIn.pic}
                 location={checkIn.location}
                 date={checkIn.date}
                 journalEntry={checkIn.journalEntry}
-              />
+              /> */}
             ))}
-          </ul> */}
+          </ul>
         </div>
       </div>
     );

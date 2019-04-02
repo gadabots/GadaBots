@@ -18,6 +18,7 @@ class CreateGadaBot extends Component {
       this.handleClose = this.handleClose.bind(this);
   
       this.state = {
+        userId: props.user._id,
         show: false,
         name: "",
         homeTown: "",
@@ -76,7 +77,7 @@ class CreateGadaBot extends Component {
        .catch(err => console.log(err));
   
       } else {
-          alert("Please give your GadaBot a name and Home Town.");
+          alert("Please give your GadaBot a name and Hometown.");
       }
 
      }
