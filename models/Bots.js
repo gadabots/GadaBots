@@ -14,7 +14,7 @@ const botSchema = new Schema({
             date: { type: Date, default: Date.now }
             }
       ],
-      userid: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+      userid:[ { type: Schema.Types.ObjectId, ref: 'user' }]
 });
 
 module.exports = Bot = mongoose.model("bot", botSchema);

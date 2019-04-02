@@ -21,24 +21,36 @@ import PropTypes from 'prop-types';
 
 class UserProfile extends Component {
     state = {
-        bots: testsBots
+        bots: testsBots,
+        user: {}
     };
+
+    updateAuth (actualUser) {
+        this.setState({user: actualUser})
+    }
 
 
     static propTypes = {
         auth: PropTypes.object.isRequired
     };
-
-        
-    componentDidMount() {
-        console.log(this.props.auth)
-    //     API.getBotsByUser(this.props.auth).then(res => { 
-    //         this.setState(
-    //           {bots: res.data});
-    //     }).catch( error => console.log(error))
-     }
     
-    render() {
+    componentDidUpdate(prevProps) {
+        if (prevProps.auth.user === null && this.props.auth.user !== null
+            ){
+            console.log("null user removed, new user:", this.props.auth.user._id);
+            console.log("this is my this:", this)
+
+           // API.getBotsByUser( this.props.auth.user._id).then(res => { 
+                console.log(this.props.auth.user.bots)
+                this.setState(
+                  {bots: this.props.auth.user.bots});
+           // }).catch( error => console.log(error))
+            //return;
+        }
+    }
+
+    
+    render() { 
         // console.log(this.props.auth);
         const { user } = this.props.auth;
 
@@ -66,7 +78,7 @@ class UserProfile extends Component {
                                 <CardTitle><h5>Your Info</h5></CardTitle>
                                 <CardText>Name: {user.name}</CardText>
                                 <CardText>Email: {user.email}</CardText>
-                                <UpdateUser user={user} />
+                                <UpdateUser user={user} auth={this.updateAuth}/>
                             </CardBody>
                         </Card>
                     </Col>

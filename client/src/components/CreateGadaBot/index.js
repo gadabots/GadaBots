@@ -51,7 +51,8 @@ class CreateGadaBot extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
-     if (this.state.name && this.state.homeTown) {
+
+     if (this.state.name && this.state.homeTown && this.state.photo) {
 
       console.log(`name: ${this.state.name}` )
       console.log(`homeTown: ${this.state.homeTown}` )
@@ -64,6 +65,7 @@ class CreateGadaBot extends Component {
           journalEntry: this.state.journal,
           photo: this.state.photo
        }
+    
       console.log(gadaBot)
        //create a new bot
       API.saveBot(gadaBot) 

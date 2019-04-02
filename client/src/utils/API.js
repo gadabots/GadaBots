@@ -11,6 +11,7 @@ export default {
     return axios.get("/api/users");
   },
   // Gets the bot with the given id
+
   getBot: function (id) {
     console.log("getBot", id)
     console.log("/api/bots/" + id)
