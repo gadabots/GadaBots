@@ -8,14 +8,19 @@ class LineBot extends Component {
     
         this.state = {
           show: this.props.submitted,
-          bot_id: props.botId 
+          bot_id: props.botId
       };
     };
 
   componentDidUpdate(prevProps) {
+    console.log("new bot props:", this.props)
     // Typical usage (don't forget to compare props):
-      if (this.props.submitted === true) {
-              this.setState({ show: true})
+      if (prevProps !== this.props
+         && this.props.submitted === true ) {
+              this.setState(
+                { show: true,
+                bot_id: this.props.botId              
+              })
             }
   }
         
@@ -32,11 +37,11 @@ class LineBot extends Component {
       <div className="card">
       <div className="card-body">
       
-        <img className="card-img-top" alt="Your New GadaBot" src="GadaBot.png" />
+        <img className="card-img-top" alt="Your New GadaBot" src="GadaBotLine.svg" />
         <h2 className="card-title">Your New GadaBot</h2>
         <h5>Congrats! You grated a new GadaBot</h5>
           <p>Your GadaBots Traking ID is: {this.state.bot_id}</p>
-          <p><strong> Write this on the bak of your Bot! </strong></p>
+          <p><strong> Write this on the back of your Bot! </strong></p>
           </div>
           </div>
         

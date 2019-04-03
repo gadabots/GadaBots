@@ -44,7 +44,7 @@ export default {
       res => window.location.reload() 
     )},
     updateUserBots: function(userid, bots) {
-      console.log(bots)
+      console.log("updateUserBots:", bots)
       axios.put("api/users/" + userid, {
         bots: bots
       })
