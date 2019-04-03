@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Button } from "reactstrap";
 import ReactS3Uploader from "react-s3-uploader";
+import LineBot from '../LineBot';
 
 class CreateGadaBot extends Component {
 
@@ -29,6 +30,9 @@ class CreateGadaBot extends Component {
   handleShow() {
     this.setState({ show: true });
   }
+  showNewBot() {
+    return (<LineBot botId={this.state.Id}/>)
+  }
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -52,6 +56,7 @@ class CreateGadaBot extends Component {
       console.log(`photo: ${this.state.photo}`);
 
       const gadaBot = {
+        userid:[this.state.userId],
         name: this.state.name,
         location: this.state.homeTown,
         journalEntry: this.state.journal,
@@ -64,8 +69,10 @@ class CreateGadaBot extends Component {
         .then(
           this.setState({
             homeTown: "",
-            journal: ""
-            //   photo: ""
+            journal: "",
+            //   photo: "",
+            show: false,
+            submitted: true
           })
         )
         .catch(err => console.log(err));

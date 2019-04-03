@@ -73,16 +73,18 @@ onChange = e => {
           if (this.state.user) {
           this.state.user.bots.push(this.state.bot)
           console.log(this.state.user)
-          API.updateUserBots(this.state.userId, this.state.userBots)
+        //  API.updateUserBots(this.state.userId, this.state.userBots)
           
-          this.setState({
+          .then(this.setState({
             id: "",
             location: "",
             journal: "",
             show: false,
-          });
+          }));
           }
          
+
+             
                    
             }
         } else  {
@@ -100,21 +102,20 @@ onChange = e => {
     return (
        <>
 
-          <Button onClick={this.handleShow} href='#' className="mt-2 mb-2">
+          <Button onClick={this.handleShow} href='#'>
            Check In GadaBot
           </Button>
         {this.state.show ?
 
       
        <div className="card  w-75">
-       <div className="card-body ">
+       <div className="card-body">
                 <form>
-
                 <div className="form-group">
-                  <label>Enter Your GadaBot's ID</label>
-                <div className="form-group ">                
+                  <label>Enter Your GaddaBot's ID</label>
+                    <input className="form-control" 
                     id="gaddaBot-id"
-                    placeholder="E.g. 12"
+                    placeholder="1234..."
                     name="id" 
                     value={this.state.name}  
                     onChange={this.onChange}/>
@@ -126,7 +127,7 @@ onChange = e => {
                     <input  
                     className="form-control" 
                     id="gaddaBot-location"
-                    placeholder="Your address here"
+                    placeholder="your address here"
                     name="location"
                     value={this.state.location} 
                     onChange={this.onChange}/>
@@ -138,7 +139,7 @@ onChange = e => {
                   <textarea  
                   className="form-control" 
                   id="journal" 
-                  placeholder="Memories from this holiday..."
+                  placeholder="Today we went to the park."
                   name="journal" 
                   value={this.state.journal} 
                   onChange={this.onChange}/>
