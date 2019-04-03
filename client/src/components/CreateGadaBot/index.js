@@ -60,7 +60,7 @@ class CreateGadaBot extends Component {
         name: this.state.name,
         location: this.state.homeTown,
         journalEntry: this.state.journal,
-        pic: this.state.photo
+        photo: this.state.photo
       };
       console.log(gadaBot);
       //create a new bot
@@ -82,8 +82,6 @@ class CreateGadaBot extends Component {
       alert("Please give your GadaBot a name and Home Town.");
     }
   };
-
-
   render() {
     return (
       <>
@@ -93,7 +91,7 @@ class CreateGadaBot extends Component {
         </Button>
 
         {this.state.show ? (
-          <div className="card  w-75">
+          <div className="card w-75">
             <div className="card-body">
               <div className="create-gadder">
                 <form>

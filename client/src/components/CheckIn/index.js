@@ -33,7 +33,6 @@ class CheckIn extends Component {
     this.setState({ show: true });
   }
 
-
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -96,7 +95,7 @@ class CheckIn extends Component {
     <Button onClick={this.handleShow} href='#' className="mt-2 mb-2">
       Check In GadaBot
     </Button>
-  {/* {this.state.show ? */}
+  {this.state.show ?
       
     <div className="card  w-75">
     <div className="card-body ">
