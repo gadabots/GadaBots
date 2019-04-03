@@ -12,9 +12,14 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import API from "../../utils/API";
 
+
 const mapStyles = {
   width: "100%",
-  height: "200%"
+  height: 350,
+  display: 'flex', 
+  flexFlow: 'row nowrap', 
+  justifyContent: 'center', 
+  padding: 0 
 };
 
 export class MapContainer extends Component {
@@ -95,6 +100,8 @@ export class MapContainer extends Component {
   componentDidMount() {
     this.getOneBotInfo();
   }
+
+  
 
   render() {
     return (
