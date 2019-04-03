@@ -42,6 +42,7 @@ export default {
     axios
       .put("api/users/" + userid, {
         image_url: url
+
       })
       .then(
         // Reload the whole page to show the new image
@@ -49,7 +50,7 @@ export default {
       );
   },
   updateUserBots: function(userid, bots) {
-    console.log(bots);
+    console.log("updateUserBots:", bots)
     axios.put("api/users/" + userid, {
       bots: bots
     });

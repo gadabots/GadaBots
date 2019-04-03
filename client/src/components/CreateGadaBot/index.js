@@ -19,7 +19,8 @@ class CreateGadaBot extends Component {
         name: "",
         homeTown: "",
         journal: "", 
-        photo: "https://ap.rdcpix.com/1582692153/db1aa4a8982b018920926013ff2577f1l-m0xd-w480_h480_q80.jpg"
+        photo: "https://ap.rdcpix.com/1582692153/db1aa4a8982b018920926013ff2577f1l-m0xd-w480_h480_q80.jpg",
+        newBot: {}
       };
     }
 
@@ -64,11 +65,13 @@ class CreateGadaBot extends Component {
       };
       console.log(gadaBot);
       //create a new bot
-      API.saveBot(gadaBot)
-      
-
+      API.saveBot(gadaBot).then( res => {
+        this.setState({
+          newBot: res.data
+        })
+      })
         .then(
-          this.setState({
+           this.setState({
             homeTown: "",
             journal: "",
             //   photo: "",
@@ -172,7 +175,7 @@ class CreateGadaBot extends Component {
             </div>
           </div>
         ) : (
-          <span> </span>
+          <div> <LineBot botId={this.state.newBot._id} submitted={this.state.submitted}/> </div> 
         )}
       </>
     );
