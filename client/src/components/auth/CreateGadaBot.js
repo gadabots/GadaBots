@@ -86,7 +86,7 @@ class CreateGadaBot extends Component {
                 </div>
                 <div className="form-group">
                   <label>
-                    Where is your Gada-Bot now?
+                    Where is your GadaBot now?
                   </label>
                     <input  
                     className="form-control" 

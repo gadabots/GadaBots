@@ -78,7 +78,8 @@ class CreateGadaBot extends Component {
   render() {
     return (
       <>
-        <Button onClick={this.handleShow} href="#" className="float-right mt-2">
+        {/* <Button onClick={this.handleShow} href="#" className="float-right mt-2"> */}
+        <Button onClick={this.handleShow} href="#">
           Create a GadaBot
         </Button>
 
@@ -123,7 +124,8 @@ class CreateGadaBot extends Component {
                   <div className="form-group">
                     <div>
                       {/* TODO: Fix styles and add label */}
-                      {/* <img src={this.state.photo} alt = "Bot" /> */}
+                      <img style={{ width: 300, height: 400 }}
+                       src={this.state.photo} alt = "Bot" />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
                         autoUpload="true"
@@ -146,18 +148,18 @@ class CreateGadaBot extends Component {
                       type="submit"
                       className="btn btn-primary mt-2"
                       onClick={this.handleFormSubmit}
-                    >
+                    >                                  
                       Create a GadaBot{" "}
                     </button>
                   </div>
                 </form>
                 <button
                   type="button"
-                  className="btn btn-secondary float-right"
+                  className="btn btn-secondary"
                   name="close"
                   onClick={this.handleClose}
                 >
-                  close The Create Bot Form
+                  Close The Create Bot Form
                 </button>
               </div>
             </div>
