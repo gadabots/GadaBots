@@ -64,8 +64,8 @@ class UserProfile extends Component {
                 </center>
                 <Row>
                     <Col sm="4">
-                        <Card>
-                            <CardImg top width="100%" src="https://steembottracker.com/img/bot_logo.png" alt="Card image cap" />
+                        <Card>                         
+                            <img style={{ width: 300, height: 450 }} src="https://steembottracker.com/img/bot_logo.png" alt="Card cap" />
                             <CardBody>
                                 <CardTitle><h5>Your Info</h5></CardTitle>
                                 <CardText>Name: {user.name}</CardText>
