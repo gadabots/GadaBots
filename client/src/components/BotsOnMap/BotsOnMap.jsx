@@ -19,7 +19,7 @@ class BotsOnMap extends Component {
         })
       )
       .then(() => {
-        console.log("saveBots", this.state.saveBots);
+        // console.log("saveBots", this.state.saveBots);
         this.getLatAndLng();
       })
       .catch(err => console.log(err));
@@ -27,9 +27,24 @@ class BotsOnMap extends Component {
 
   //here is a function to grab city name and convert it to lat and lng
   getLatAndLng = () => {
+    // console.log(
+    //   "getting last location",
+    //   this.state.saveBots.map(bot => ({
+    //     botsId: bot._id,
+    //     location: bot.checkIns.map(checkin => checkin.location)
+    //   }))
+    // );
+    // console.log(
+    //   "getting last location",
+    //   this.state.saveBots.map(bot => ({
+    //     botsId: bot._id,
+    //     location: bot.checkIns.slice(-1).map(checkin => checkin.location)
+    //   }))
+    // );
+
     let botCityAndId = this.state.saveBots.map(bot => ({
       botsId: bot._id,
-      location: bot.checkIns.map(checkin => checkin.location)
+      location: bot.checkIns.slice(-1).map(checkin => checkin.location)
     }));
     Geocode.setApiKey("AIzaSyBAIKAtjZeY9SStYI_Dr7XDiALX17AkK0Y");
 
@@ -37,7 +52,7 @@ class BotsOnMap extends Component {
       return Geocode.fromAddress(botCityAndId[i].location).then(
         response => {
           const { lat, lng } = response.results[0].geometry.location;
-          console.log(lat, lng);
+          // console.log(lat, lng);
           this.setState({
             botPlaces: this.state.botPlaces.concat({
               _id: botCityAndId[i].botsId,
