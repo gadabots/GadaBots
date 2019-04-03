@@ -68,7 +68,7 @@ onChange = e => {
            }
            
            console.log("data to be stored: "+ this.state.bot)
-          API.checkInBot(this.state.id, this.state.bot).catch( error => console.log(error));
+         API.checkInBot(this.state.id, this.state.bot).catch( error => console.log(error));
 
           if (this.state.user) {
           this.state.user.bots.push(this.state.bot)

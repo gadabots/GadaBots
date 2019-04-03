@@ -33,7 +33,9 @@ class UserProfile extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.auth.user === null && this.props.auth.user !== null
             ){
-                console.log(this.props.auth.user.bots)
+        //console.log(this.props.auth.user.bots)
+                API.getBotsByUser(this.props.auth.user._id);
+
                 this.setState(
                   {bots: this.props.auth.user.bots});
        

@@ -14,7 +14,7 @@ class CreateGadaBot extends Component {
       this.handleClose = this.handleClose.bind(this);
   
       this.state = {
-        userId: props.user._id,
+        userId: props? props.user._id : "",
         show: false,
         name: "",
         homeTown: "",
@@ -64,7 +64,9 @@ class CreateGadaBot extends Component {
       };
       console.log(gadaBot);
       //create a new bot
-      API.saveBot(gadaBot)
+      API.saveBot(gadaBot).then( (res, data)  => {
+        console.log(data)
+      })
 
         .then(
           this.setState({
@@ -74,6 +76,7 @@ class CreateGadaBot extends Component {
             show: false,
             submitted: true
           })
+          
         )
         .catch(err => console.log(err));
     } else {
@@ -129,8 +132,8 @@ class CreateGadaBot extends Component {
                   </div>
                   <div className="form-group">
                     <div>
-                      {/* TODO: Fix styles and add label */}
-                      {/* <img src={this.state.photo} alt = "Bot" /> */}
+                      TODO: Fix styles and add label 
+                       <img src={this.state.photo} alt = "Bot" />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
                         autoUpload="true"
@@ -139,7 +142,7 @@ class CreateGadaBot extends Component {
                         }}
                       />
                     </div>
-                    {/* <div className="custom-file">
+                    <div className="custom-file">
                   <input type="file" 
                   className="custom-file-input" 
                   id="customFile" 
@@ -148,7 +151,7 @@ class CreateGadaBot extends Component {
                   className="custom-file-label" 
                   name="photo" >Upload a Pic
                   </label>
-                </div> */}
+                </div>
                     <button
                       type="submit"
                       className="btn btn-primary mt-2"
