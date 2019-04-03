@@ -52,7 +52,3 @@ class LineBot extends Component {
 }
 
 export default LineBot;
-  //  <button type="button" 
-  //             className="btn btn-secondary" 
-  //             onClick={this.handleClose}
-  //             >Close</button>
