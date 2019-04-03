@@ -61,7 +61,7 @@ class CreateGadaBot extends Component {
         name: this.state.name,
         location: this.state.homeTown,
         journalEntry: this.state.journal,
-        pic: this.state.photo
+        photo: this.state.photo
       };
       console.log(gadaBot);
       //create a new bot
@@ -85,17 +85,16 @@ class CreateGadaBot extends Component {
       alert("Please give your GadaBot a name and Home Town.");
     }
   };
-
-
   render() {
     return (
       <>
-        <Button onClick={this.handleShow} href="#" className="float-right mt-2">
+        {/* <Button onClick={this.handleShow} href="#" className="float-right mt-2"> */}
+        <Button onClick={this.handleShow} href="#">
           Create a GadaBot
         </Button>
 
         {this.state.show ? (
-          <div className="card  w-75">
+          <div className="card w-75">
             <div className="card-body">
               <div className="create-gadder">
                 <form>
@@ -134,8 +133,9 @@ class CreateGadaBot extends Component {
                   </div>
                   <div className="form-group">
                     <div>
-                      TODO: Fix styles and add label 
-                       <img src={this.state.photo} alt = "Bot" />
+                      {/* TODO: Fix styles and add label */}
+                      <img style={{ width: 300, height: 400 }}
+                       src={this.state.photo} alt = "Bot" />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
                         autoUpload="true"
@@ -158,18 +158,18 @@ class CreateGadaBot extends Component {
                       type="submit"
                       className="btn btn-primary mt-2"
                       onClick={this.handleFormSubmit}
-                    >
+                    >                                  
                       Create a GadaBot{" "}
                     </button>
                   </div>
                 </form>
                 <button
                   type="button"
-                  className="btn btn-secondary float-right"
+                  className="btn btn-secondary"
                   name="close"
                   onClick={this.handleClose}
                 >
-                  close The Create Bot Form
+                  Close The Create Bot Form
                 </button>
               </div>
             </div>
