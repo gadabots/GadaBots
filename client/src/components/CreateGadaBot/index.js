@@ -60,13 +60,12 @@ class CreateGadaBot extends Component {
         name: this.state.name,
         location: this.state.homeTown,
         journalEntry: this.state.journal,
-        photo: this.state.photo
+        pic: this.state.photo
       };
       console.log(gadaBot);
       //create a new bot
-      API.saveBot(gadaBot).then( (res, data)  => {
-        console.log(data)
-      })
+      API.saveBot(gadaBot)
+      
 
         .then(
           this.setState({

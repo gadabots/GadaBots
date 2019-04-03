@@ -8,7 +8,7 @@ class LineBot extends Component {
     
         this.state = {
           show: this.props.submitted,
-          bot_id: props.botId
+          bot_id: props.botId 
       };
     };
 
@@ -37,8 +37,6 @@ class LineBot extends Component {
         <h5>Congrats! You grated a new GadaBot</h5>
           <p>Your GadaBots Traking ID is: {this.state.bot_id}</p>
           <p><strong> Write this on the bak of your Bot! </strong></p>
-          
-         
           </div>
           </div>
         
