@@ -139,27 +139,17 @@ class CreateGadaBot extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <div>
-                      TODO: Fix styles and add label
-                       <img src={this.state.photo} alt="Bot" />
+                
+                       <label>Upload photo</label>
+                       <br />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
                         onFinish={req => {
                           this.setState({ photo: req.publicUrl });
                         }}
                       />
-                    </div>
-                  
-                    <div className="custom-file">
-                      <input type="file"
-                        className="custom-file-input"
-                        id="customFile"
-                        name="photo" />
-                      <label
-                        className="custom-file-label"
-                        name="photo" >Upload a Pic
-                  </label>
-                    </div>
+                      <img src={this.state.photo} alt="Bot" />
+              
                     <button
                       type="submit"
                       className="btn btn-primary mt-2"
