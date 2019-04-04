@@ -164,7 +164,7 @@ class CreateGadaBot extends Component {
                   className="btn btn-secondary float-right"
                   name="close"
                   onClick={this.handleClose}>
-                  close The Create Bot Form
+                  Close
                 </button>
               </div>
             </div>

@@ -12,7 +12,7 @@ import {
   Col,
   CardTitle,
   CardText,
-  // CardImg,
+  CardImg,
   CardBody
 } from "reactstrap";
 
@@ -64,8 +64,7 @@ class UserProfile extends Component {
 
     return (
       <Container>
-        <br />
-
+      <br />
         <center>
           <h1>{`Welcome ${user.name}`}!</h1>
           <CheckIn user={user} />
@@ -76,11 +75,7 @@ class UserProfile extends Component {
         <Row>
           <Col sm="4">
             <Card>
-              <img
-                style={{ width: 300, height: 450 }}
-                src={ user.image_url}
-                alt="Card cap"
-              />
+              <CardImg src={ user.image_url}/>
               <CardBody>
                 <CardTitle>
                   <h5>Your Info</h5>
@@ -137,14 +132,7 @@ class UserProfile extends Component {
           </Col>
         </Row>
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <br/>
         <Row />
       </Container>
     );
