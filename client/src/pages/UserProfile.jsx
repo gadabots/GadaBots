@@ -33,11 +33,14 @@ class UserProfile extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.auth.user === null && this.props.auth.user !== null
             ){
-        //console.log(this.props.auth.user.bots)
-                API.getBotsByUser(this.props.auth.user._id);
+        console.log("user Bots:", this.props.auth.user.bots)
+                if (this.props.auth.user.bots) {
+                   API.getBotsByUser(this.props.auth.user._id);
 
-                this.setState(
-                  {bots: this.props.auth.user.bots});
+                    this.setState(
+                      {bots: this.props.auth.user.bots});
+                }
+              
        
         }
     }
@@ -75,7 +78,7 @@ class UserProfile extends Component {
                         </Card>
                     </Col>
                     <Col sm="8">
-                        <Card body>
+                    {this.state.ewihoih  ? <Card body>
                             <CardTitle><h4>Your GadaBot(s)</h4></CardTitle>
 
                             <ul>
@@ -102,8 +105,20 @@ class UserProfile extends Component {
                             </ul>
 
 
-                        </Card>
+                        </Card>: <br />}
                     </Col>
+                </Row>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <Row>
+                    
                 </Row>
             </Container>
         );

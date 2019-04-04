@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CheckIn from "../components/CheckIn";
 import FunFact from "../components/FunFact";
-import CreateGadaBot from "../components/CreateGadaBot";
+import Canvas from "../components/Canvas";
 import API from "../utils/API";
 
 class App extends Component {
@@ -50,11 +50,7 @@ class App extends Component {
           <div className="card">
             <div className="row">
               <div className="col-3">
-                <img
-                  className="card-img-top"
-                  src={this.state.Bot_Image}
-                  alt={"this.state.bot_Id.name"}
-                />
+                <Canvas  src={this.state.Bot_Image} alt={this.state.bot_Name}></Canvas>
               </div>
               <div className="card-body col-9">
                 <div className="card-title">
