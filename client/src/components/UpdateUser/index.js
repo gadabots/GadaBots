@@ -99,8 +99,8 @@ onChange = e => {
                       name="name"
                       value={this.state.name}
                       onChange={this.handleInputChange} />
-                 
-                  
+                  <br/>
+                  <br/> 
                   <br />
                   <button
                   name="nameUpdate"
@@ -113,8 +113,8 @@ onChange = e => {
                 <div>
                   <label>Change your profile pic</label>
                   <ReactS3Uploader 
-                              signingUrl="/s3/sign"
-                              onFinish={ (req) => { API.updateUserImage(this.state.userid, req.publicUrl); }}/>
+                    signingUrl="/s3/sign"
+                    onFinish={ (req) => { API.updateUserImage(this.state.userid, req.publicUrl); }}/>
                 </div>
                 <br />
               <button type="button" 
