@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import API from "../../utils/API";
 
 class LineBot extends Component {
 
@@ -8,7 +8,8 @@ class LineBot extends Component {
     
         this.state = {
           show: this.props.submitted,
-          bot_id: props.botId
+          bot: props.bot,
+          userId: props.userId
       };
     };
 
@@ -19,8 +20,13 @@ class LineBot extends Component {
          && this.props.submitted === true ) {
               this.setState(
                 { show: true,
-                bot_id: this.props.botId              
-              })
+                bot_id: this.props.bot._id              
+              }) 
+            if (this.props.user) {
+              this.props.user.bots.push(this.props.bot._id)
+              API.updateUserBots(this.state.userId, this.props.user.bots) 
+            }else 
+            console.log("could not find usr")
             }
   }
         

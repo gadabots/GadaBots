@@ -18,10 +18,10 @@ import {
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+const botData =[]
 class UserProfile extends Component {
     state = {
-        bots: testsBots
+        bots: []
     };
 
 
@@ -35,16 +35,33 @@ class UserProfile extends Component {
             ){
         console.log("user Bots:", this.props.auth.user.bots)
                 if (this.props.auth.user.bots) {
-                   API.getBotsByUser(this.props.auth.user._id);
+                  // API.getBotsByUser(this.props.auth.user._id);
 
                     this.setState(
-                      {bots: this.props.auth.user.bots});
+                      {botIds: this.props.auth.user.bots});
+
+                      
+                      this.props.auth.user.bots.forEach(id => {
+                            API.getBot(id).then(res => {
+                              console.log("this bot is:", res.data)
+                                botData.push(res.data)
+                                 
+                                
+                              }).then(
+                                this.setState({
+                                    bots: botData
+                                   })).then(
+                                console.log("state of bot page after id push", this.state))
+                           });
+                       
                 }
               
-       
+
         }
     }
     
+
+
     render() {
         // console.log(this.props.auth);
         const { user } = this.props.auth;
@@ -78,14 +95,14 @@ class UserProfile extends Component {
                         </Card>
                     </Col>
                     <Col sm="8">
-                    {this.state.ewihoih  ? <Card body>
+                    {this.state.bots  ? <Card body>
                             <CardTitle><h4>Your GadaBot(s)</h4></CardTitle>
 
                             <ul>
                                 {this.state.bots.map(bot => (
                                     <li className="list-group-item list-group-item-action">
 
-                                        <div  key={bot.id}>
+                                        <div  key={bot._id}>
                                             <div className="row">
                                                 <div className="col-3">
                                                     <img className="card-img-top" src={bot.checkIns[0].pic}
@@ -105,7 +122,7 @@ class UserProfile extends Component {
                             </ul>
 
 
-                        </Card>: <br />}
+                        </Card>: <div>this should not show</div>}
                     </Col>
                 </Row>
                 <br />

@@ -7,22 +7,24 @@ import LineBot from '../LineBot';
 
 class CreateGadaBot extends Component {
 
-    constructor(props, context) {
-      super(props, context);
-  
-      this.handleShow = this.handleShow.bind(this);
-      this.handleClose = this.handleClose.bind(this);
-  
-      this.state = {
-        userId: props? props.user._id : "",
-        show: false,
-        name: "",
-        homeTown: "",
-        journal: "", 
-        photo: "https://ap.rdcpix.com/1582692153/db1aa4a8982b018920926013ff2577f1l-m0xd-w480_h480_q80.jpg",
-        newBot: {}
-      };
-    }
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
+    this.state = {
+      userId: props ? props.user._id : "",
+      user: props ? props.user : "",
+      show: false,
+      name: "",
+      homeTown: "",
+      journal: "",
+      photo: "GadaBot.svg",
+      newBot: {},
+      submitted: false,
+    };
+  }
 
   handleClose() {
     this.setState({ show: false });
@@ -32,7 +34,7 @@ class CreateGadaBot extends Component {
     this.setState({ show: true });
   }
   showNewBot() {
-    return (<LineBot botId={this.state.Id}/>)
+    return (<LineBot botId={this.state.Id} />)
   }
 
   handleInputChange = event => {
@@ -57,7 +59,7 @@ class CreateGadaBot extends Component {
       console.log(`photo: ${this.state.photo}`);
 
       const gadaBot = {
-        userid:[this.state.userId],
+        userid: [this.state.userId],
         name: this.state.name,
         location: this.state.homeTown,
         journalEntry: this.state.journal,
@@ -65,20 +67,24 @@ class CreateGadaBot extends Component {
       };
       console.log(gadaBot);
       //create a new bot
-      API.saveBot(gadaBot).then( res => {
+      API.saveBot(gadaBot).then(res => {
         this.setState({
           newBot: res.data
         })
-      })
+      })//.then(
+        //  this.state.newBot._id
+        //  ? API.updateUserBots(this.state.userId, [this.state.newBot]) 
+        //  : console.log("did not update user bots. No bot ID \r", this.state.newBot )
+        // )
         .then(
-           this.setState({
+          this.setState({
             homeTown: "",
             journal: "",
             //   photo: "",
             show: false,
             submitted: true
           })
-          
+
         )
         .catch(err => console.log(err));
     } else {
@@ -134,8 +140,8 @@ class CreateGadaBot extends Component {
                   </div>
                   <div className="form-group">
                     <div>
-                      TODO: Fix styles and add label 
-                       <img src={this.state.photo} alt = "Bot" />
+                      TODO: Fix styles and add label
+                       <img src={this.state.photo} alt="Bot" />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
                         autoUpload="true"
@@ -145,15 +151,15 @@ class CreateGadaBot extends Component {
                       />
                     </div>
                     <div className="custom-file">
-                  <input type="file" 
-                  className="custom-file-input" 
-                  id="customFile" 
-                  name="photo"/>
-                  <label 
-                  className="custom-file-label" 
-                  name="photo" >Upload a Pic
+                      <input type="file"
+                        className="custom-file-input"
+                        id="customFile"
+                        name="photo" />
+                      <label
+                        className="custom-file-label"
+                        name="photo" >Upload a Pic
                   </label>
-                </div>
+                    </div>
                     <button
                       type="submit"
                       className="btn btn-primary mt-2"
@@ -167,16 +173,20 @@ class CreateGadaBot extends Component {
                   type="button"
                   className="btn btn-secondary float-right"
                   name="close"
-                  onClick={this.handleClose}
-                >
+                  onClick={this.handleClose}>
                   close The Create Bot Form
                 </button>
               </div>
             </div>
           </div>
         ) : (
-          <div> <LineBot botId={this.state.newBot._id} submitted={this.state.submitted}/> </div> 
-        )}
+            <div>
+              <LineBot bot={this.state.newBot}
+                submitted={this.state.submitted}
+                userId={this.state.userId} 
+                user={this.state.user}/>
+            </div>
+          )}
       </>
     );
   }
