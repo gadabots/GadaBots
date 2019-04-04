@@ -27,21 +27,6 @@ class BotsOnMap extends Component {
 
   //here is a function to grab city name and convert it to lat and lng
   getLatAndLng = () => {
-    // console.log(
-    //   "getting last location",
-    //   this.state.saveBots.map(bot => ({
-    //     botsId: bot._id,
-    //     location: bot.checkIns.map(checkin => checkin.location)
-    //   }))
-    // );
-    // console.log(
-    //   "getting last location",
-    //   this.state.saveBots.map(bot => ({
-    //     botsId: bot._id,
-    //     location: bot.checkIns.slice(-1).map(checkin => checkin.location)
-    //   }))
-    // );
-
     let botCityAndId = this.state.saveBots.map(bot => ({
       botsId: bot._id,
       location: bot.checkIns.slice(-1).map(checkin => checkin.location)
@@ -79,6 +64,10 @@ class BotsOnMap extends Component {
           botPlaces={this.state.botPlaces}
           saveBots={this.state.saveBots}
         />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
