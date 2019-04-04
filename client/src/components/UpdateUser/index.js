@@ -79,17 +79,18 @@ onChange = e => {
   render() {
     console.log(this.state)
     return (
-      <>
+      <>      
       <Button onClick={this.handleShow} href='#'>
       Update Profile
     </Button>
+    <br/>
+    <br/>
 
     {this.state.show ?
         <div className="card">
           <div className="card-body">
             <div className="update-user">
               <form>
-
                 <div className="form-row align-items-center">
                   
                     <label>Change your Name</label>
@@ -113,15 +114,17 @@ onChange = e => {
                   {/* TODO: Fix styles and add label */}
                 <ReactS3Uploader 
                             signingUrl="/s3/sign"
-                            autoUpload="true" 
                             onFinish={ (req) => { API.updateUserImage(this.state.userid, req.publicUrl); }}/>
                 <br />
               <button type="button" 
-              className="btn btn-secondary" 
-              name="close"
-              onClick={this.handleClose}
-              >Close</button>
-              </form>
+                className="btn btn-secondary" 
+                name="close"
+                onClick={this.handleClose}
+                >Close
+              </button>
+              <br/>
+              <br/>       
+              </form>            
           </div>
         </div>
       </div>

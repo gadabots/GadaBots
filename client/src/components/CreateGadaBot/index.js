@@ -57,7 +57,7 @@ class CreateGadaBot extends Component {
       console.log(`homeTown: ${this.state.homeTown}`);
       console.log(`jounal: ${this.state.journal}`);
       console.log(`photo: ${this.state.photo}`);
-
+     
       const gadaBot = {
         userid: [this.state.userId],
         name: this.state.name,
@@ -84,17 +84,17 @@ class CreateGadaBot extends Component {
             show: false,
             submitted: true
           })
-
         )
         .catch(err => console.log(err));
     } else {
-      alert("Please give your GadaBot a name and Home Town.");
+      alert("Please give your GadaBot a Name and Home Town");
     }
   };
 
 
   render() {
     return (
+      
       <>
         <Button onClick={this.handleShow} href="#" className="float-right mt-2">
           Create a GadaBot
@@ -121,7 +121,7 @@ class CreateGadaBot extends Component {
                     <input
                       className="form-control"
                       id="gaddaBot-homeTown"
-                      placeholder="your address here"
+                      placeholder="You Address Here"
                       name="homeTown"
                       value={this.state.homeTown}
                       onChange={this.handleInputChange}
@@ -132,7 +132,7 @@ class CreateGadaBot extends Component {
                     <textarea
                       className="form-control"
                       id="journal"
-                      placeholder="Today we went to the park."
+                      placeholder="Memories from the trip.."
                       name="journal"
                       value={this.state.journal}
                       onChange={this.handleInputChange}
@@ -144,12 +144,12 @@ class CreateGadaBot extends Component {
                        <img src={this.state.photo} alt="Bot" />
                       <ReactS3Uploader
                         signingUrl="/s3/sign"
-                        autoUpload="true"
                         onFinish={req => {
                           this.setState({ photo: req.publicUrl });
                         }}
                       />
                     </div>
+                  
                     <div className="custom-file">
                       <input type="file"
                         className="custom-file-input"

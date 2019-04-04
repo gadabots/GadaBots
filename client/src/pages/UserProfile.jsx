@@ -78,7 +78,7 @@ class UserProfile extends Component {
             <Card>
               <img
                 style={{ width: 300, height: 450 }}
-                src="https://steembottracker.com/img/bot_logo.png"
+                src={ user.image_url}
                 alt="Card cap"
               />
               <CardBody>
