@@ -135,11 +135,13 @@ class CheckIn extends Component {
         </div>
         <div>
           {/* TODO: Fix styles and add label */}
-          <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
+          <label>Upload photo</label>
+          <br />
           <ReactS3Uploader 
             signingUrl="/s3/sign"
-            autoUpload="true" 
             onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/>
+          <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
+          
         </div>
             {/* <div className="form-group">
               <div className="custom-file">

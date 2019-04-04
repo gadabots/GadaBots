@@ -110,11 +110,12 @@ onChange = e => {
                  
                 </div>
                 <br />
-
-                  {/* TODO: Fix styles and add label */}
-                <ReactS3Uploader 
-                            signingUrl="/s3/sign"
-                            onFinish={ (req) => { API.updateUserImage(this.state.userid, req.publicUrl); }}/>
+                <div>
+                  <label>Change your profile pic</label>
+                  <ReactS3Uploader 
+                              signingUrl="/s3/sign"
+                              onFinish={ (req) => { API.updateUserImage(this.state.userid, req.publicUrl); }}/>
+                </div>
                 <br />
               <button type="button" 
                 className="btn btn-secondary" 
