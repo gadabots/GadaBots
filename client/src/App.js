@@ -5,7 +5,6 @@ import store from "./store";
 import { loadUser } from "./actions/authActions";
 import "./App.css";
 import AppNavbar from "./components/AppNavbar";
-import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
 import Home from "./pages/Home";
 import BotProfile from "./pages/BotProfile";

@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import {
-  Container,
-  Button,
-  Card,
-  CardTitle,
-  CardText,
-  CardImg
-} from "reactstrap";
+import { Container, Button, Card, CardTitle, CardText } from "reactstrap";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import API from "../../utils/API";
 
-
 const mapStyles = {
   width: "100%",
   height: 350,
-  display: 'flex', 
-  flexFlow: 'row nowrap', 
-  justifyContent: 'center', 
-  padding: 0 
+  display: "flex",
+  flexFlow: "row nowrap",
+  justifyContent: "center",
+  padding: 0
 };
 
 export class MapContainer extends Component {
@@ -100,8 +92,6 @@ export class MapContainer extends Component {
   componentDidMount() {
     this.getOneBotInfo();
   }
-
-  
 
   render() {
     return (
