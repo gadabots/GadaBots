@@ -1,43 +1,39 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import API from "../../utils/API";
 
 class LineBot extends Component {
-
- constructor(props) {
+  constructor(props) {
     super(props);
-    
-        this.state = {
-          show: this.props.submitted,
-          bot: props.bot,
-          userId: props.userId
-      };
+
+    this.state = {
+      show: this.props.submitted,
+      bot: props.bot,
+      userId: props.userId
     };
+  }
 
   componentDidUpdate(prevProps) {
-    console.log("new bot props:", this.props);
+    // console.log("new bot props:", this.props);
     // Typical usage (don't forget to compare props):
-      if (prevProps !== this.props
-         && this.props.submitted === true ) {
-              this.setState(
-                { show: true,
-                bot_id: this.props.bot._id,      
-                bot_pic: this.props.bot.checkIns[0].pic        
-              }) 
-            if (this.props.user) {
-              this.props.user.bots.push(this.props.bot._id)
-              API.updateUserBots(this.state.userId, this.props.user.bots) 
-            }else 
-            console.log("could not find usr")
-            }
+    if (prevProps !== this.props && this.props.submitted === true) {
+      this.setState({
+        show: true,
+        bot_id: this.props.bot._id,
+        bot_pic: this.props.bot.checkIns[0].pic
+      });
+      if (this.props.user) {
+        this.props.user.bots.push(this.props.bot._id);
+        API.updateUserBots(this.state.userId, this.props.user.bots);
+      } else console.log("could not find usr");
+    }
   }
-        
-    
- handleClose() {
+
+  handleClose() {
     this.setState({ show: false });
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
     <div>
      {this.state.show ?
@@ -52,6 +48,7 @@ class LineBot extends Component {
       </div>        
     :  <span></span> }
     </div>
+
     );
   }
 }
