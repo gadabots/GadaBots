@@ -134,7 +134,7 @@ class CheckIn extends Component {
               onChange={this.onChange}/>
         </div>
         <div>
-          {/* TODO: Fix styles and add label */}
+          {/* TODO: Fix styles and add label */}          
           <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
           <ReactS3Uploader 
             signingUrl="/s3/sign"
