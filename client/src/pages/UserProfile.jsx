@@ -70,7 +70,7 @@ class UserProfile extends Component {
               <CardImg src={user.image_url} />
               <CardBody>
                 <CardTitle>
-                  <h5>Your Info</h5>
+                  <h5>Your Profile</h5>
                 </CardTitle>
                 <CardText>Name: {user.name}</CardText>
                 <CardText>Email: {user.email}</CardText>
@@ -87,7 +87,10 @@ class UserProfile extends Component {
 
                 <ul>
                   {this.state.bots.map(bot => (
-                    <li className="list-group-item list-group-item-action">
+                    <li
+                      key={bot._id}
+                      className="list-group-item list-group-item-action"
+                    >
                       <div key={bot._id}>
                         <div className="row">
                           <div className="col-3">

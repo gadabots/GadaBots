@@ -71,7 +71,7 @@ class UpdateUser extends Component {
     // console.log(this.state)
     return (
       <>
-        <Button onClick={this.handleShow} href="#">
+        <Button onClick={this.handleShow} href="#" className="btn btn-success">
           Update Profile
         </Button>
         <br />

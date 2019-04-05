@@ -38,7 +38,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container text-capitalize">
+      <div className="container ">
         <CheckIn />
         <br />
         <br />
@@ -53,7 +53,7 @@ class App extends Component {
                   {" "}
                   <h1>{this.state.bot_Name}</h1>
                 </div>
-                <p>
+                <p className="text-capitalize">
                   <strong>Hometown: </strong>
                   {this.state.location}
                 </p>

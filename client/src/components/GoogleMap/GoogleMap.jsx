@@ -131,7 +131,9 @@ export class MapContainer extends Component {
                     to={`/botProfile/${this.state.selectedId}`}
                     state={this.state.selectedId}
                   >
-                    <Button className="float-right">View Bot</Button>
+                    <Button className="float-right btn-success">
+                      View Bot
+                    </Button>
                   </Link>
                 </Router>
               </Container>

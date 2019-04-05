@@ -51,8 +51,8 @@ class CheckIn extends Component {
               photo: this.state.photo
             };
 
-            console.log("CheckIn:" + newCheckIn.location);
-            console.log("Bot:" + this.state.bot);
+            // console.log("CheckIn:" + newCheckIn.location);
+            // console.log("Bot:" + this.state.bot);
             this.state.bot.checkIns.push(newCheckIn);
 
             if (this.state.user) {
@@ -86,7 +86,11 @@ class CheckIn extends Component {
   render() {
     return (
       <>
-        <Button onClick={this.handleShow} href="#" className="mt-2 mb-2">
+        <Button
+          onClick={this.handleShow}
+          href="#"
+          className="btn-success mt-2 mb-2"
+        >
           Check In GadaBot
         </Button>
         {this.state.show ? (

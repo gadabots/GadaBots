@@ -3,10 +3,9 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Button } from "reactstrap";
 import ReactS3Uploader from "react-s3-uploader";
-import LineBot from '../LineBot';
+import LineBot from "../LineBot";
 
 class CreateGadaBot extends Component {
-
   constructor(props, context) {
     super(props, context);
 
@@ -22,7 +21,7 @@ class CreateGadaBot extends Component {
       journal: "",
       photo: "GadaBot.svg",
       newBot: {},
-      submitted: false,
+      submitted: false
     };
   }
 
@@ -34,7 +33,7 @@ class CreateGadaBot extends Component {
     this.setState({ show: true });
   }
   showNewBot() {
-    return (<LineBot botId={this.state.Id} />)
+    return <LineBot botId={this.state.Id} />;
   }
 
   handleInputChange = event => {
@@ -57,7 +56,7 @@ class CreateGadaBot extends Component {
       console.log(`homeTown: ${this.state.homeTown}`);
       console.log(`jounal: ${this.state.journal}`);
       console.log(`photo: ${this.state.photo}`);
-     
+
       const gadaBot = {
         userid: [this.state.userId],
         name: this.state.name,
@@ -67,13 +66,14 @@ class CreateGadaBot extends Component {
       };
       console.log(gadaBot);
       //create a new bot
-      API.saveBot(gadaBot).then(res => {
-        this.setState({
-          newBot: res.data
-        })
-      })//.then(
+      API.saveBot(gadaBot)
+        .then(res => {
+          this.setState({
+            newBot: res.data
+          });
+        }) //.then(
         //  this.state.newBot._id
-        //  ? API.updateUserBots(this.state.userId, [this.state.newBot]) 
+        //  ? API.updateUserBots(this.state.userId, [this.state.newBot])
         //  : console.log("did not update user bots. No bot ID \r", this.state.newBot )
         // )
         .then(
@@ -91,12 +91,13 @@ class CreateGadaBot extends Component {
     }
   };
 
-
   render() {
     return (
-      
       <>
-        <Button onClick={this.handleShow} href="#" className="float-right mt-2">
+        <Button
+          onClick={this.handleShow}
+          className=" btn btn-success float-right mt-2"
+        >
           Create a GadaBot
         </Button>
 
@@ -139,44 +140,46 @@ class CreateGadaBot extends Component {
                     />
                   </div>
                   <div className="form-group">
-                
-                       <label>Upload photo</label>
-                       <br />
-                      <ReactS3Uploader
-                        signingUrl="/s3/sign"
-                        onFinish={req => {
-                          this.setState({ photo: req.publicUrl });
-                        }}
-                      />
-                      <img src={this.state.photo} alt="Bot" />
-              
-                    <button
+                    <label>Upload photo</label>
+                    <br />
+                    <ReactS3Uploader
+                      signingUrl="/s3/sign"
+                      onFinish={req => {
+                        this.setState({ photo: req.publicUrl });
+                      }}
+                    />
+                    <img src={this.state.photo} alt="Bot" />
+
+                    <Button
                       type="submit"
-                      className="btn btn-primary mt-2"
+                      className="btn btn-primary btn-success mt-2"
                       onClick={this.handleFormSubmit}
                     >
                       Create a GadaBot{" "}
-                    </button>
+                    </Button>
                   </div>
                 </form>
                 <button
                   type="button"
                   className="btn btn-secondary float-right"
                   name="close"
-                  onClick={this.handleClose}>
+                  onClick={this.handleClose}
+                >
                   Close
                 </button>
               </div>
             </div>
           </div>
         ) : (
-            <div>
-              <LineBot bot={this.state.newBot}
-                submitted={this.state.submitted}
-                userId={this.state.userId} 
-                user={this.state.user}/>
-            </div>
-          )}
+          <div>
+            <LineBot
+              bot={this.state.newBot}
+              submitted={this.state.submitted}
+              userId={this.state.userId}
+              user={this.state.user}
+            />
+          </div>
+        )}
       </>
     );
   }
