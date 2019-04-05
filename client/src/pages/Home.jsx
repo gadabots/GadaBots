@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import BotsOnMap from "../components/BotsOnMap/BotsOnMap";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-
-import { Button } from "reactstrap";
+import { Container, Button } from "reactstrap";
 
 class Home extends Component {
   state = {};
@@ -18,13 +17,16 @@ class Home extends Component {
               What's more, you'll be able to track and see all the locations
               your little GadaBot visits and learn about these places too.
             </p>
-            <Router>
-              <Link to={"/FAQ"}>
-                <Button className="btn btn-secondary">
-                  Read our FAQ to learn more
-                </Button>
-              </Link>
-            </Router>
+
+            <Container>
+              <Router>
+                <Link to={`/FAQ`}>
+                  <Button className="float-right">
+                    Read our FAQ to learn more
+                  </Button>
+                </Link>
+              </Router>
+            </Container>
           </div>{" "}
         </div>
         <div className="col-8 col-md-8 col-sm-8 col-lg-8">

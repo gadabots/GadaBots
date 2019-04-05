@@ -30,33 +30,25 @@ class UserProfile extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.auth.user === null && this.props.auth.user !== null) {
-      console.log("user Bots:", this.props.auth.user.bots);
       if (this.props.auth.user.bots) {
-        // API.getBotsByUser(this.props.auth.user._id);
-
         this.setState({ botIds: this.props.auth.user.bots });
-
         this.props.auth.user.bots.forEach(id => {
           API.getBot(id)
             .then(res => {
-              console.log("this bot is:", res.data);
               botData.push(res.data);
             })
             .then(
               this.setState({
                 bots: botData
               })
-            )
-            .then(console.log("state of bot page after id push", this.state));
+            );
         });
       }
     }
   }
 
   render() {
-    // console.log(this.props.auth);
     const { user } = this.props.auth;
-
     // Don't render until the user is available
     if (!user) {
       return <h5>Please log in to see this page</h5>;
@@ -64,7 +56,7 @@ class UserProfile extends Component {
 
     return (
       <Container>
-      <br />
+        <br />
         <center>
           <h1>{`Welcome ${user.name}`}!</h1>
           <CheckIn user={user} />
@@ -75,7 +67,7 @@ class UserProfile extends Component {
         <Row>
           <Col sm="4">
             <Card>
-              <CardImg src={ user.image_url}/>
+              <CardImg src={user.image_url} />
               <CardBody>
                 <CardTitle>
                   <h5>Your Info</h5>
@@ -132,7 +124,7 @@ class UserProfile extends Component {
           </Col>
         </Row>
         <br />
-        <br/>
+        <br />
         <Row />
       </Container>
     );
