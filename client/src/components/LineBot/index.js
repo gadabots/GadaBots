@@ -42,7 +42,7 @@ class LineBot extends Component {
               <img
                 className="card-img-top"
                 alt="Your New GadaBot"
-                src={this.state.bot_pic}
+                src="GadaBotLine.svg"
               />
               <h2 className="card-title">Your New GadaBot</h2>
               <h5>Congrats! You created a new GadaBot</h5>
