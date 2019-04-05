@@ -13,9 +13,7 @@ class FAQ extends Component {
           </h2>
          
           <p class="card-text">
-            <p>
-
-              <span>
+             <span>
 
               <b> Q. How does this work?</b>
               <br /> <b>A. </b> You ("Person A") create a GadaBot and an
