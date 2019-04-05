@@ -35,7 +35,6 @@ class LineBot extends Component {
   render() {
     // console.log(this.props)
     return (
-<<<<<<< HEAD
     <div>
      {this.state.show ?
       <div className="card">
@@ -50,29 +49,6 @@ class LineBot extends Component {
     :  <span></span> }
     </div>
 
-=======
-      <div>
-        {this.state.show ? (
-          <div className="card">
-            <div className="card-body">
-              <img
-                className="card-img-top"
-                alt="Your New GadaBot"
-                src="GadaBotLine.svg"
-              />
-              <h2 className="card-title">Your New GadaBot</h2>
-              <h5>Congrats! You created a new GadaBot</h5>
-              <p>Your GadaBots Tracking ID is: {this.state.bot_id}</p>
-              <p>
-                <strong> Write this on the back of your Bot! </strong>
-              </p>
-            </div>
-          </div>
-        ) : (
-          <span />
-        )}
-      </div>
->>>>>>> f4e39e114fb792d43e313b5293f8309a1d35b544
     );
   }
 }
