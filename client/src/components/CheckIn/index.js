@@ -20,7 +20,7 @@ class CheckIn extends Component {
       id: "",
       location: "",
       journal: "", 
-      photo: ""
+      photo: "GadaBot.png"
     };
   }
 

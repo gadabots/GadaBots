@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 
+
 class FAQ extends Component {
   render() {
     return (
+      <div className="container" >
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">
+          <img className="card-img-cap" src="GadaBot1.png" alt="GadaBot"/>
             <u>FAQ PAGE </u>
           </h2>
+         
           <p class="card-text">
             <p>
               <b> Q. How does this work?</b>
@@ -101,6 +105,7 @@ class FAQ extends Component {
             </p>
           </p>
         </div>
+      </div>
       </div>
     );
   }

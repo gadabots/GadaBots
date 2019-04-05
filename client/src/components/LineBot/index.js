@@ -43,7 +43,7 @@ class LineBot extends Component {
      {this.state.show ?
       <div className="card">
         <div className="card-body">      
-          <img className="card-img-top" alt="Your New GadaBot" src={ this.state.bot_pic } />
+          <img className="card-img-top" alt="Your New GadaBot" src="GadaBotLine.svg" />
           <h2 className="card-title">Your New GadaBot</h2>
           <h5>Congrats! You created a new GadaBot</h5>
             <p>Your GadaBots Tracking ID is: {this.state.bot_id}</p>
