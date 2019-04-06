@@ -8,7 +8,7 @@ class FAQ extends Component {
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">
-          <img className="card-img-cap" src="GadaBot1.png" alt="GadaBot"/>
+          <img className="card-img-cap" src="/GadaBot1.png" alt="GadaBot"/>
             <u>FAQ PAGE </u>
           </h2>
          
