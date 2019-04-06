@@ -69,7 +69,7 @@ Then print out and color your GadaBot however you'd like. After you register you
 
 **\***IMPORTANT**\*** Be sure to include the tracking number on the back of your GadaBot. It's super important! That's how you can follow your Bot's fantastic voyage. The people who receive your Bot in the mail need it to update your Bot's trip.
 
-Write a journal entry about what your GadaBot saw and upload a picture or two of your Gadabot enjoying the sights during its visit with you. Then mail (postal mail) the Bot to someone else you know who would like to host the bot for a visit. That person will then go through the same process you did. [Here is a simple instruction sheet for you to include with your Bot.](instructions.txt)
+Write a journal entry about what your GadaBot saw and upload a picture or two of your Gadabot enjoying the sights during its visit with you. Then mail (postal mail) the Bot to someone else you know who would like to host the bot for a visit. That person will then go through the same process you did. [Here is a simple instruction sheet for you to include when you mail your Bot.](instructions.txt)
 
 Q. A friend just sent me a GadaBot. What do I do now?
 
