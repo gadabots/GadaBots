@@ -22,6 +22,7 @@ router.post('/', (req, res) => {
       if(!user) return res.status(400).json({ msg: 'User Does not Exist' });
 
       // Validate password
+      // "password, user.password" Compares plaintext password with hashed password
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if(!isMatch) return res.status(400).json({ msg: 'Invalid Credentials' });
