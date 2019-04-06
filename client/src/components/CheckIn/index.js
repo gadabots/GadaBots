@@ -47,7 +47,7 @@ class CheckIn extends Component {
             {bot: res.data});
 
             if(!this.state.location) {
-              alert("please add a new location")
+              alert("Please Add a New Location")
            }
        
             else  {
@@ -83,7 +83,7 @@ class CheckIn extends Component {
               }      
             }
           } else  {
-              alert("please enter a valid GadaBot ID")
+              alert("Please Enter a Valid GadaBot ID")
           }
 
         }).catch( error => console.log(error))

@@ -45,6 +45,7 @@ router.post('/', (req, res) => {
                 { id: user.id },
                 require("../../config/Keys").jwtSecret,
                 { expiresIn: 3600 },
+                // Callback
                 (err, token) => {
                   if(err) throw err;
                   res.json({
