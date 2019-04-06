@@ -20,7 +20,7 @@ class CheckIn extends Component {
       id: "",
       location: "",
       journal: "", 
-      photo: "GadaBot.png"
+      photo: "/GadaBot.png"
     };
   }
 
@@ -55,7 +55,7 @@ class CheckIn extends Component {
               const newCheckIn = {
                 location: this.state.location,
                 journalEntry: this.state.journal,
-                photo:this.state.photo
+                pic:this.state.photo
               }
               
               console.log("CheckIn:" + newCheckIn.location);
@@ -134,12 +134,12 @@ class CheckIn extends Component {
               onChange={this.onChange}/>
         </div>
         <div>
-          {/* TODO: Fix styles and add label */}          
-          <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
+          <label>Upload photo</label>
+          <br />        
           <ReactS3Uploader 
             signingUrl="/s3/sign"
-            autoUpload="true" 
             onFinish={ (req) => { this.setState({ photo: req.publicUrl}) }}/>
+          <img src={this.state.photo} alt= "Bot" hidden= { !this.state.photo } />
         </div>
             {/* <div className="form-group">
               <div className="custom-file">

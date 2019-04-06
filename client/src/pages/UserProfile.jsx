@@ -94,11 +94,13 @@ class UserProfile extends Component {
                       <div key={bot._id}>
                         <div className="row">
                           <div className="col-3">
+                          <a href={"/botProfile/" + bot._id}>
                             <img
                               className="card-img-top"
                               src={bot.checkIns[0].pic}
                               alt={bot.name}
                             />
+                            </a>
                           </div>
 
                           <div className="col-9">
