@@ -48,13 +48,10 @@ Inpert all with `npm i`
 
 `const path = require('path');`
 
-### Site Strucure
+### Site Structure
 
 How the site is strucured: https://drive.google.com/file/d/1Qylgo9EnG4TXb_E_XC5irQwpViv1uAim/view?usp=sharing
 Our MVC: https://docs.google.com/presentation/d/1bK1Omsm5Zd1G4l3Bk6Gy95xzOu6yZQqkmx14kR-R3AY/edit?usp=sharing
-
-###How To Use Our APP
-FOR THE HOME PAGE
 
 Welcome to GadaBots!
 
@@ -62,7 +59,7 @@ You've found a place where you can create your own little robot (a GadaBot)and s
 
 ---
 
-FOR THE FAQ PAGE
+FAQ
 
 Q. How does this work?
 
