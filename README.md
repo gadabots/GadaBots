@@ -79,7 +79,7 @@ Q. What if my Bot gets damaged or goes missing?
 
 A. That can sometimes be sad, but fortuntately you have the option to create a brand new Bot with a new name, new Bot ID# and a new journey. Simply register for a new account and create a new Bot.
 
-Or, if the Bot disappears or gets damaged during its visit with you can give the Bot a new body but keep its original name and original BotID. ("You can build it better, stronger, faster..." ;-) ) In this case print out a new Bot from [our template](client/public/images/GadaBotLine.svg) and use the same ID as the original missing or damaged Bot. If you like, try to color the Bot as close to the original as possible.
+Or, if the Bot disappears or gets damaged during its visit with you can give the Bot a new body but keep its original name and original BotID. ("You can build it better, stronger, faster..." ;-) ) In this case print out a new Bot from [our template](client/public/GadaBotLine.svg) and use the same ID as the original missing or damaged Bot. If you like, try to color the Bot as close to the original as possible.
 
 Q. Where does the name "GadaBot" come from?
 
