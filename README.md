@@ -1,6 +1,6 @@
 # GadaBots
 
-Check out GadBots Here!: [this is where we put a link to the heroku page]
+Check out GadBots Here!: https://gadabots-heidi.herokuapp.com/
 
 ### About This App
 
