@@ -1,36 +1,40 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import './App.css';
-import Navbar from "./components/Navbar/navbar"
-import Header from "./components/Header/header"
-import Footer from "./components/Footer/footer"
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import { loadUser } from "./actions/authActions";
+import "./App.css";
+import AppNavbar from "./components/AppNavbar";
+import Footer from "./components/Footer/footer";
 import Home from "./pages/Home";
-import botPorfile from "./pages/botPorfile";
-import userPorfile from "./pages/userPorfile";
-import signIn from "./pages/signIn";
-import signUp from "./pages/signUp";
+import BotProfile from "./pages/BotProfile";
+import UserProfile from "./pages/UserProfile";
 import NoMatch from "./pages/NoMatch";
+import FAQ from "./pages/FAQ";
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
-      <Router>
-      <div>
-        <Navbar />
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/botPorfile" component={botPorfile} />
-          <Route exact path="/userPorfile" component={userPorfile} />
-          <Route exact path="/signUp" component={signUp} />
-          <Route exact path="/signIn" component={signIn} />
-          <Route exact path="*" component={NoMatch} />
-          </Switch>
-        <Footer />
-      </div>
-    </Router>
-    )
-        }
+      <Provider store={store}>
+        <Router>
+          <div>
+            <AppNavbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/botProfile/:id" component={BotProfile} />
+              <Route exact path="/userProfile" component={UserProfile} />
+              <Route exact path="/FAQ" component={FAQ} />
+              <Route exact path="*" component={NoMatch} />
+            </Switch>
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
